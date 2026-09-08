@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="vine branch ornament">
+  <g fill="none" stroke="#C9A227" stroke-width="2.5" stroke-linecap="round">
+    <path d="M40 380 C90 320 70 260 120 210 C170 160 150 110 210 70 C250 44 300 50 350 30"/>
+    <path d="M120 210 C150 210 180 220 200 245"/>
+    <path d="M210 70 C230 95 260 105 295 100"/>
+    <path d="M85 285 C110 285 130 295 142 315"/>
+    <ellipse cx="205" cy="252" rx="16" ry="8" transform="rotate(38 205 252)"/>
+    <ellipse cx="300" cy="98" rx="15" ry="8" transform="rotate(-8 300 98)"/>
+    <ellipse cx="146" cy="322" rx="14" ry="7" transform="rotate(48 146 322)"/>
+    <circle cx="250" cy="170" r="7"/><circle cx="266" cy="178" r="7"/>
+    <circle cx="258" cy="188" r="7"/><circle cx="242" cy="184" r="7"/>
+    <path d="M250 162 C252 155 256 150 262 146"/>
+    <path d="M330 55 C340 70 338 88 326 100"/>
+    <path d="M330 55 C348 58 360 70 362 88"/>
+  </g>
+</svg>

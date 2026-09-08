@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" width="160" height="48" role="img" aria-label="agroai logo">
+  <ellipse cx="22" cy="27" rx="6" ry="9" fill="none" stroke="#C9A227" stroke-width="2" transform="rotate(-18 22 27)"/><path d="M22 18 v18" stroke="#C9A227" stroke-width="1.2" transform="rotate(-18 22 27)"/><rect x="29" y="10" width="9" height="9" rx="1.5" fill="none" stroke="#C9A227" stroke-width="1.6"/><path d="M31.5 10 v-3 M35.5 10 v-3 M31.5 22 v-3 M35.5 22 v-3" stroke="#C9A227" stroke-width="1.2"/>
+  <text x="46" y="31" font-family="Cormorant Garamond, Georgia, serif" font-size="26" font-weight="600" fill="#6B1530" letter-spacing="1">AG</text>
+  <line x1="46" y1="38" x2="70" y2="38" stroke="#C9A227" stroke-width="1.4"/>
+</svg>

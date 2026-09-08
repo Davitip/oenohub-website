@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" width="160" height="48" role="img" aria-label="agglotap logo">
+  <path d="M17 13 h14 v4 l-2.5 17 a4 4 0 0 1-4 3.5 h-1 a4 4 0 0 1-4-3.5 l-2.5-17z" fill="none" stroke="#C9A227" stroke-width="2"/><path d="M17 17 h14" stroke="#C9A227" stroke-width="1.4"/><path d="M20 23 h8 M21 28 h6" stroke="#C9A227" stroke-width="1.1" opacity="0.8"/>
+  <text x="46" y="31" font-family="Cormorant Garamond, Georgia, serif" font-size="26" font-weight="600" fill="#6B1530" letter-spacing="1">AT</text>
+  <line x1="46" y1="38" x2="70" y2="38" stroke="#C9A227" stroke-width="1.4"/>
+</svg>
