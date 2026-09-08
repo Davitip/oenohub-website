@@ -18,7 +18,7 @@ export const en: Dictionary = {
   },
   footer: {
     tagline:
-      'A unified ecosystem for the wine and agro industry — from vineyard to glass, under one brand.',
+      'A unified ecosystem for the wine and agro industry — from vineyard to the final product, under one brand.',
     ecosystem: 'Ecosystem',
     navigation: 'Navigation',
     contact: 'Contact',
@@ -77,8 +77,8 @@ export const en: Dictionary = {
   home: {
     hero: {
       eyebrow: 'A unified ecosystem for the wine industry',
-      h1: ['“From', 'vineyard', 'to', 'glass', '— one ecosystem”'],
-      sub: 'OenoHub.ge unites the full wine and agro value chain: technology, production and packaging, logistics and education — 11 companies, one vision.',
+      h1: ['“From', 'vineyard', 'to the', 'final', 'product”'],
+      sub: 'One ecosystem. A complete technological chain — 11 companies: technology, production and packaging, logistics and education, one vision.',
       ctaPrimary: 'Explore the Ecosystem',
       ctaSecondary: 'Education & Franchises',
       scroll: 'Scroll down',
@@ -450,7 +450,7 @@ export const en: Dictionary = {
     hero: {
       eyebrow: '— ABOUT US —',
       title: ['One', 'brand', '—', 'an entire', 'industry'],
-      sub: 'OenoHub.ge was born of a simple idea: the Georgian wine industry deserves a unified, modern, interconnected ecosystem — from vineyard to glass.',
+      sub: 'OenoHub.ge was born of a simple idea: the Georgian wine industry deserves a unified, modern, interconnected ecosystem — from vineyard to the final product.',
     },
     story: {
       eyebrow: '— OUR STORY —',
