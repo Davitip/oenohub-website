@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Facebook } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -33,10 +33,17 @@ export default function CompanyModal({ company, onClose }: CompanyModalProps) {
                   <img src={company.logo} alt="" className="max-h-8 w-auto" />
                 </div>
                 <div className="min-w-0">
-                  <span
-                    className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.06em] ${category.badgeClass}`}
-                  >
-                    {d.eco.categories[category.id].badge}
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span
+                      className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.06em] ${category.badgeClass}`}
+                    >
+                      {d.eco.categories[category.id].badge}
+                    </span>
+                    {company.id === 'winehub' && (
+                      <span className="inline-flex items-center rounded-full border border-gold-500/50 bg-gold-500/15 px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[#8A6D12]">
+                        {d.eco.founderBadge}
+                      </span>
+                    )}
                   </span>
                   <DialogHeader className="mt-2 space-y-1 text-left">
                     <DialogTitle className="font-serif text-[26px] font-semibold leading-[1.25] text-ink-900">
@@ -82,7 +89,8 @@ export default function CompanyModal({ company, onClose }: CompanyModalProps) {
                 rel="noreferrer"
                 className="sheen inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-burgundy-950 transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98]"
               >
-                {d.eco.modal.visit}
+                {company.id === 'winehub' && <Facebook className="h-4 w-4" />}
+                {company.id === 'winehub' ? d.eco.companies.winehub.linkLabel : d.eco.modal.visit}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>

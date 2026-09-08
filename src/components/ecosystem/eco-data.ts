@@ -1,8 +1,9 @@
-export type EcoCategoryId = 'tech' | 'packaging' | 'logistics'
+export type EcoCategoryId = 'tech' | 'distribution' | 'packaging' | 'logistics'
 export type FilterKey = 'all' | EcoCategoryId
 
 export interface EcoCompany {
   id:
+    | 'winehub'
     | 'winelens'
     | 'vineai'
     | 'agroai'
@@ -40,6 +41,14 @@ export const ECO_CATEGORIES: EcoCategory[] = [
     cardClass: 'border-cream-200 bg-cream-100',
   },
   {
+    id: 'distribution',
+    anchor: 'cat-distribution',
+    badgeClass: 'border-burgundy-700/30 bg-burgundy-700/10 text-burgundy-800',
+    sectionClass: 'bg-cream-100',
+    cardClass: 'border-cream-200 bg-cream-50',
+    alternate: true,
+  },
+  {
     id: 'packaging',
     anchor: 'cat-packaging',
     badgeClass: 'border-gold-500/30 bg-gold-500/15 text-[#8A6D12]',
@@ -60,11 +69,20 @@ export const ECO_CATEGORIES: EcoCategory[] = [
 export const FILTER_PILLS: { key: FilterKey }[] = [
   { key: 'all' },
   { key: 'tech' },
+  { key: 'distribution' },
   { key: 'packaging' },
   { key: 'logistics' },
 ]
 
 export const ECO_COMPANIES: EcoCompany[] = [
+  {
+    id: 'winehub',
+    name: 'Wine Hub',
+    logo: '/logo-winehub.svg',
+    url: 'https://www.facebook.com/winehub.ge',
+    linkLabel: 'facebook.com/winehub.ge',
+    category: 'distribution',
+  },
   {
     id: 'winelens',
     name: 'Winelens.ge',

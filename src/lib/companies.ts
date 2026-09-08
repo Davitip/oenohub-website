@@ -1,5 +1,6 @@
-export type CompanyCategory = 'tech' | 'packaging' | 'logistics' | 'education'
+export type CompanyCategory = 'tech' | 'distribution' | 'packaging' | 'logistics' | 'education'
 export type CompanyId =
+  | 'winehub'
   | 'winelens'
   | 'vineai'
   | 'agroai'
@@ -22,12 +23,20 @@ export interface Company {
 /** Accent color per category (badge / card top strip) */
 export const CATEGORY_COLORS: Record<CompanyCategory, string> = {
   tech: '#5A6B3F',
+  distribution: '#6B1530',
   packaging: '#C9A227',
   logistics: '#8A1E42',
   education: '#DDBC4E',
 }
 
 export const COMPANIES: Company[] = [
+  {
+    id: 'winehub',
+    name: 'Wine Hub',
+    logo: '/logo-winehub.svg',
+    category: 'distribution',
+    url: 'https://www.facebook.com/winehub.ge',
+  },
   {
     id: 'winelens',
     name: 'Winelens.ge',

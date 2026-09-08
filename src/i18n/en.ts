@@ -32,11 +32,16 @@ export const en: Dictionary = {
   companies: {
     categories: {
       tech: 'Technology & AI',
+      distribution: 'Distribution',
       packaging: 'Production & Packaging',
       logistics: 'Logistics & Services',
       education: 'Education',
     },
     items: {
+      winehub: {
+        description:
+          'Exclusive distributor of small and medium wineries — wine and spirits.',
+      },
       winelens: {
         description: 'A digital analytics and management platform for winemakers.',
       },
@@ -73,7 +78,7 @@ export const en: Dictionary = {
     hero: {
       eyebrow: 'A unified ecosystem for the wine industry',
       h1: ['“From', 'vineyard', 'to', 'glass', '— one ecosystem”'],
-      sub: 'OenoHub.ge unites the full wine and agro value chain: technology, production and packaging, logistics and education — 10 companies, one vision.',
+      sub: 'OenoHub.ge unites the full wine and agro value chain: technology, production and packaging, logistics and education — 11 companies, one vision.',
       ctaPrimary: 'Explore the Ecosystem',
       ctaSecondary: 'Education & Franchises',
       scroll: 'Scroll down',
@@ -116,7 +121,7 @@ export const en: Dictionary = {
     },
     carousel: {
       eyebrow: 'Our ecosystem companies',
-      headingPre: '10 companies — ',
+      headingPre: '11 companies — ',
       headingItalic: 'one standard',
       text: 'Each company covers its own link in the ecosystem chain — together they form a complete service for the wine and agro business.',
       all: 'All companies',
@@ -163,7 +168,7 @@ export const en: Dictionary = {
   eco: {
     hero: {
       eyebrow: '— ECOSYSTEM —',
-      h1: ['“10', 'companies,', 'one', 'vision”'],
+      h1: ['“11', 'companies,', 'one', 'vision”'],
       sub: 'The OenoHub.ge ecosystem covers the full wine and agro value chain — from technology in the vineyard to production and packaging, logistics and international education.',
     },
     filter: {
@@ -176,6 +181,12 @@ export const en: Dictionary = {
         badge: 'Technology & AI',
         heading: '“Digital tools for the vineyard and the cellar”',
         blurb: 'AI analytics, monitoring and oenological protocols — data-driven decisions.',
+      },
+      distribution: {
+        badge: 'Distribution',
+        heading: '“Giving small and medium wineries a voice in the market”',
+        blurb:
+          'Exclusive distribution across HoReCa and retail — the company where it all began.',
       },
       packaging: {
         badge: 'Production & Packaging',
@@ -190,12 +201,25 @@ export const en: Dictionary = {
     },
     details: 'Learn more',
     detailsNoun: 'Details',
+    founderBadge: 'Founding company',
     modal: {
       features: 'Key features',
       member: 'OenoHub.ge — ecosystem member',
       visit: 'Visit website',
     },
     companies: {
+      winehub: {
+        tagline: 'Exclusive distributor of small and medium wineries',
+        description:
+          'Wine Hub is the founding company of the ecosystem — where it all began: exclusive distribution of small and medium wineries across wine and spirits.',
+        long: [
+          'Wine Hub is the founding company of the OenoHub.ge ecosystem — where it all began: an exclusive distributor of small and medium wineries for wine and spirits, based in Tbilisi (8 G. Kartozia St, 0177).',
+          'The company works with independent wineries whose voices are rarely heard in large retail chains: Wine Hub places their products across HoReCa and retail — with curation, logistics and brand support.',
+          'It was Wine Hub’s daily practice that revealed the industry’s gaps — technology, packaging, logistics and education — the gaps the ecosystem’s other companies were later created to fill.',
+        ],
+        chips: ['Exclusive distribution', 'Small & medium wineries', 'HoReCa and retail network'],
+        linkLabel: 'Facebook page',
+      },
       winelens: {
         tagline: 'Digital wine analytics and management',
         description:
@@ -434,7 +458,7 @@ export const en: Dictionary = {
       paragraphs: [
         'Georgia is the cradle of wine — with an 8,000-year tradition. But tradition alone is not enough: a modern industry demands technology, quality packaging, logistics and education. These gaps were visible in the daily work of thousands of Georgian winemakers.',
         'The OenoHub.ge ecosystem was created precisely to fill these gaps — step by step: first digital tools for viticulture and oenology, then European supplies of packaging and filtration, logistics and consulting, and finally international education.',
-        'Today, 10 companies work as a single organism. Each is a leader in its field; together they form a complete chain the Georgian wine industry has never had before.',
+        'Today, 11 companies work as a single organism. Each is a leader in its field; together they form a complete chain the Georgian wine industry has never had before.',
       ],
     },
     mission: {
@@ -467,8 +491,8 @@ export const en: Dictionary = {
       heading: 'Stages of the ecosystem’s formation',
       stages: [
         {
-          title: 'The technology stage',
-          text: 'It began with Winelens.ge and Oeno.ge: the digital foundation of the wine industry. Then VineAI.ge and AgroAI.ge — AI in viticulture and agriculture.',
+          title: 'The beginning — Wine Hub',
+          text: 'It all began with Wine Hub — the distribution of small and medium wineries. Then Winelens.ge and Oeno.ge laid the digital foundation of the wine industry, followed by VineAI.ge and AgroAI.ge — AI in viticulture and agriculture.',
         },
         {
           title: 'The packaging stage',
@@ -496,7 +520,7 @@ export const en: Dictionary = {
       headingPre: 'Discover the ',
       headingItalic: 'ecosystem',
       headingPost: ' up close',
-      primary: '10 Companies',
+      primary: '11 Companies',
       secondary: 'Contact',
     },
   },
@@ -556,7 +580,7 @@ export const en: Dictionary = {
       items: [
         {
           q: 'What is OenoHub.ge?',
-          a: 'A unified ecosystem platform bringing together 10 wine and agro-industry companies and two international education franchises — from technology to education.',
+          a: 'A unified ecosystem platform bringing together 11 wine and agro-industry companies and two international education franchises — from technology to education.',
         },
         {
           q: 'How do I order packaging (bottles, corks)?',

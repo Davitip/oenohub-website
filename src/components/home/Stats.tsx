@@ -4,7 +4,7 @@ import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const VALUES = [10, 4, 2, 1]
+const VALUES = [11, 4, 2, 1]
 
 export default function Stats() {
   const { d } = useLang()

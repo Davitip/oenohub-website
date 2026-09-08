@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Facebook } from 'lucide-react'
 import { useLang } from '@/i18n/LanguageContext'
 import type { EcoCompany } from './eco-data'
 
@@ -52,10 +52,17 @@ export default function CompanyCard({
 
       {/* content */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <span
-          className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.06em] ${badgeClass}`}
-        >
-          {badge}
+        <span className="flex flex-wrap items-center gap-2">
+          <span
+            className={`inline-flex w-fit items-center rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.06em] ${badgeClass}`}
+          >
+            {badge}
+          </span>
+          {company.id === 'winehub' && (
+            <span className="inline-flex w-fit items-center rounded-full border border-gold-500/50 bg-gold-500/15 px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[#8A6D12]">
+              {d.eco.founderBadge}
+            </span>
+          )}
         </span>
         <h3 className="mt-3 font-serif text-[22px] font-semibold leading-[1.25] text-ink-900 lg:text-[26px]">
           {company.name}
@@ -92,7 +99,8 @@ export default function CompanyCard({
               rel="noreferrer"
               className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-ink-400 transition-colors hover:text-gold-500"
             >
-              {company.linkLabel}
+              {company.id === 'winehub' && <Facebook className="h-3.5 w-3.5" />}
+              {company.id === 'winehub' ? d.eco.companies.winehub.linkLabel : company.linkLabel}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
             </a>
           )}

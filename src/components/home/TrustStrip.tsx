@@ -6,7 +6,7 @@ import { useLang } from '@/i18n/LanguageContext'
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 const FACT_META = [
-  { icon: Network, value: 10, suffix: '' },
+  { icon: Network, value: 11, suffix: '' },
   { icon: GraduationCap, value: 2, suffix: '' },
   { icon: Warehouse, value: 200, suffix: '' },
   { icon: Cpu, value: 21, suffix: '' },
