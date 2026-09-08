@@ -48,6 +48,38 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // OenoHub.ge brand palette
+        burgundy: {
+          950: '#2A0710',
+          900: '#3D0A18',
+          800: '#4E0E22',
+          700: '#6B1530',
+          600: '#8A1E42',
+        },
+        'wine-glow': '#A62650',
+        gold: {
+          300: '#EBD48A',
+          400: '#DDBC4E',
+          500: '#C9A227',
+        },
+        cream: {
+          50: '#FAF6EC',
+          100: '#F3ECDC',
+          200: '#E7DCC4',
+        },
+        ink: {
+          900: '#1C1410',
+          600: '#5C4F45',
+          400: '#8A7B6D',
+        },
+        milk: '#FDFBF5',
+        'vine-green': '#5A6B3F',
+      },
+      fontFamily: {
+        serif: ['"Noto Serif Georgian"', 'Georgia', 'serif'],
+        sans: ['"Noto Sans Georgian"', 'system-ui', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -58,6 +90,8 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        'card-hover': '0 18px 40px -12px rgb(42 7 16 / 0.25)',
+        'gold-glow': '0 0 24px rgb(201 162 39 / 0.35)',
       },
       keyframes: {
         "accordion-down": {
@@ -72,11 +106,21 @@ module.exports = {
           "0%,70%,100%": { opacity: "1" },
           "20%,50%": { opacity: "0" },
         },
+        "scroll-bounce": {
+          "0%, 100%": { transform: "translateY(0)", opacity: "1" },
+          "50%": { transform: "translateY(10px)", opacity: "0.55" },
+        },
+        "badge-pulse": {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgb(201 162 39 / 0.35)" },
+          "50%": { boxShadow: "0 0 16px 2px rgb(201 162 39 / 0.28)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "scroll-bounce": "scroll-bounce 1.8s ease-in-out infinite",
+        "badge-pulse": "badge-pulse 2.6s ease-in-out infinite",
       },
     },
   },
