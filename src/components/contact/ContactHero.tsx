@@ -1,0 +1,41 @@
+import { motion } from 'framer-motion'
+
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
+
+export default function ContactHero() {
+  return (
+    <section
+      data-theme="dark"
+      className="bg-hero-gradient relative -mt-20 flex min-h-[40vh] items-center justify-center overflow-hidden pb-14 pt-36"
+    >
+      <div className="grain-overlay" aria-hidden="true" />
+      <div className="relative mx-auto max-w-3xl px-6 text-center">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="text-xs font-semibold tracking-[0.22em] text-gold-400"
+        >
+          — კონტაქტი —
+        </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
+          className="mt-6 font-serif text-4xl font-semibold leading-[1.12] tracking-[-0.01em] text-milk lg:text-[56px]"
+        >
+          დაგვიკავშირდი
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
+          className="mx-auto mt-5 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
+        >
+          გინდა შეუერთდე ეკოსისტემას, შეუკვეთო ტარა, გაიარო სერტიფიცირება თუ გჭირდება კონსულტაცია —
+          ერთი შეტყობინება საკმარისია.
+        </motion.p>
+      </div>
+    </section>
+  )
+}
