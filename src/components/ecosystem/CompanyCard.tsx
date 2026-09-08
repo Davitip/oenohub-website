@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { useLang } from '@/i18n/LanguageContext'
 import type { EcoCompany } from './eco-data'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
@@ -24,6 +25,8 @@ export default function CompanyCard({
   fromLeft,
   onDetails,
 }: CompanyCardProps) {
+  const { d } = useLang()
+  const copy = d.eco.companies[company.id]
   const hidden =
     fromLeft === undefined
       ? { opacity: 0, y: 40 }
@@ -43,7 +46,7 @@ export default function CompanyCard({
       {/* monogram */}
       <div className="flex shrink-0 items-start">
         <div className="flex h-20 w-36 items-center justify-center rounded-2xl border border-cream-200 bg-cream-50 px-4 transition-all duration-300 group-hover:border-gold-500/40 group-hover:bg-gold-500/10 group-hover:shadow-gold-glow">
-          <img src={company.logo} alt={`${company.name} ლოგო`} className="max-h-10 w-auto" />
+          <img src={company.logo} alt={`${company.name} ${d.common.logoSuffix}`} className="max-h-10 w-auto" />
         </div>
       </div>
 
@@ -57,12 +60,12 @@ export default function CompanyCard({
         <h3 className="mt-3 font-serif text-[22px] font-semibold leading-[1.25] text-ink-900 lg:text-[26px]">
           {company.name}
         </h3>
-        <p className="mt-1 text-sm font-medium text-burgundy-700">{company.tagline}</p>
-        <p className="mt-3 text-[15px] leading-[1.7] text-ink-600">{company.description}</p>
+        <p className="mt-1 text-sm font-medium text-burgundy-700">{copy.tagline}</p>
+        <p className="mt-3 text-[15px] leading-[1.7] text-ink-600">{copy.description}</p>
 
         {/* feature chips */}
         <div className="mt-4 flex flex-wrap gap-2">
-          {company.chips.map((chip) => (
+          {copy.chips.map((chip) => (
             <span
               key={chip}
               className="rounded-full border border-cream-200 bg-white/70 px-3 py-1 text-xs text-ink-600 transition-colors duration-300 hover:border-gold-500/40 hover:bg-gold-500/10 hover:text-ink-900"
@@ -79,7 +82,7 @@ export default function CompanyCard({
             onClick={() => onDetails(company)}
             className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-burgundy-700 transition-colors hover:text-burgundy-600"
           >
-            {company.id === 'gs' ? 'დეტალები' : 'დეტალურად'}
+            {company.id === 'gs' ? d.eco.detailsNoun : d.eco.details}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
           </button>
           {company.id !== 'gs' && (

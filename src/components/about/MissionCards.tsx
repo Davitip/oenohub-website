@@ -1,27 +1,14 @@
 import { motion } from 'framer-motion'
 import { Eye, Gem, Target } from 'lucide-react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const CARDS = [
-  {
-    icon: Target,
-    title: 'მისია',
-    text: 'ღვინისა და აგრო ინდუსტრიის ყოველი მოთამაშისთვის მივაწოდოთ ინსტრუმენტები, ხარისხი და ცოდნა — ერთი სანდო წყაროდან.',
-  },
-  {
-    icon: Eye,
-    title: 'ხედვა',
-    text: 'კავკასია როგორც ღვინის ინდუსტრიის თანამედროვე ცენტრი — სადაც ტრადიცია და ტექნოლოგია ერთმანეთს აძლიერებს.',
-  },
-  {
-    icon: Gem,
-    title: 'ღირებულებები',
-    text: 'ხარისხი კომპრომისის გარეშე · გამჭვირვალე პარტნიორობა · ცოდნის გაზიარება · მდგრადი განვითარება.',
-  },
-]
+const CARD_ICONS = [Target, Eye, Gem]
 
 export default function MissionCards() {
+  const { d } = useLang()
+  const CARDS = CARD_ICONS.map((icon, i) => ({ icon, ...d.about.mission.cards[i] }))
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-burgundy-900 py-[72px] lg:py-[120px]">
       <div className="grain-overlay" aria-hidden="true" />

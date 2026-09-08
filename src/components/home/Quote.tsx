@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const QUOTE =
-  '„ღვინი იწყება ვენახში და მთავრდება გამოცდილებით — ჩვენ ვაერთიანებთ ყველა რგოლს ამ გზაზე."'
-
 export default function Quote() {
-  const words = QUOTE.split(' ')
+  const { d } = useLang()
+  const words = d.home.quote.text.split(' ')
 
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-burgundy-950 py-[72px] lg:py-[120px]">
@@ -59,7 +58,7 @@ export default function Quote() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          — OenoHub.ge გუნდი
+          {d.home.quote.by}
         </motion.p>
       </div>
     </section>

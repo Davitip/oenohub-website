@@ -1,14 +1,11 @@
 import { motion } from 'framer-motion'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const PARAGRAPHS = [
-  'საქართველო ღვინის სამშობლოა — 8000 წლიანი ტრადიციით. მაგრამ ტრადიცია თავისთავად არ კმარა: თანამედროვე ინდუსტრია მოითხოვს ტექნოლოგიას, ხარისხიან ტარას, ლოგისტიკას და განათლებას. ეს ხვრელები ათასობით ქართული მეღვინის ყოველდღიურობაში ჩანდა.',
-  'OenoHub.ge-ს ეკოსისტემა სწორედ ამ ხვრელების შესავსებად შეიქმნა — ეტაპობრივად: ჯერ ციფრული ინსტრუმენტები მევენახეობისა და ენოლოგიისთვის, შემდეგ ტარისა და ფილტრაციის ევროპული მიწოდება, ლოგისტიკა და კონსალტინგი, ბოლოს კი — საერთაშორისო განათლება.',
-  'დღეს 10 კომპანია მუშაობს როგორც ერთი ორგანიზმი. თითოეული — თავის სფეროში ლიდერი, ერთად კი — სრული ჯაჭვი, რომელსაც ქართული ღვინის ინდუსტრია არასდროს ჰყოლია.',
-]
-
 export default function Story() {
+  const { d } = useLang()
+  const PARAGRAPHS = d.about.story.paragraphs
   return (
     <section className="relative overflow-hidden bg-cream-50 py-[72px] lg:py-[120px]">
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-12 px-6 lg:grid-cols-12 lg:gap-8 lg:px-12">
@@ -22,7 +19,7 @@ export default function Story() {
               transition={{ duration: 0.7, ease: EASE }}
               className="text-xs font-semibold tracking-[0.22em] text-gold-500"
             >
-              — ამბავი —
+              {d.about.story.eyebrow}
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 32 }}
@@ -31,7 +28,7 @@ export default function Story() {
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
               className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
             >
-              როგორ ჩამოყალიბდა ეკოსისტემა
+              {d.about.story.heading}
             </motion.h2>
             <motion.img
               src="/vine-branch.svg"

@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link } from 'react-router'
 import { ghostLinkDark } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 export default function LocationBand() {
+  const { d } = useLang()
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-burgundy-950 py-14">
       <div className="h-px w-full bg-gold-line absolute top-0" aria-hidden="true" />
@@ -24,10 +26,10 @@ export default function LocationBand() {
           <MapPin className="h-5 w-5" strokeWidth={1.8} />
         </motion.span>
         <p className="font-serif text-xl text-milk lg:text-2xl">
-          თბილისი, საქართველო — ღვინის სამშობლოს გულში
+          {d.contact.location.text}
         </p>
         <Link to="/" className={ghostLinkDark}>
-          მთავარი გვერდი
+          {d.contact.location.link}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </motion.div>

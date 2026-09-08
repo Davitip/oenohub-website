@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const QUOTE_WORDS =
-  '„ჩვენ ვაშენებთ ინდუსტრიას, რომელიც ჩვენს შვილებსაც ექნებათ."'.split(' ')
-
 export default function AtmosphereStrip() {
+  const { d } = useLang()
+  const QUOTE_WORDS = d.about.atmosphere.quote.split(' ')
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%'])
@@ -15,7 +15,7 @@ export default function AtmosphereStrip() {
     <section ref={ref} data-theme="dark" className="relative h-[60vh] min-h-[420px] overflow-hidden">
       <motion.img
         src="/about-team.png"
-        alt="OenoHub.ge-ს გუნდი ღვინის მარანში"
+        alt={d.about.atmosphere.alt}
         className="absolute inset-0 h-[120%] w-full object-cover"
         style={{ y }}
       />

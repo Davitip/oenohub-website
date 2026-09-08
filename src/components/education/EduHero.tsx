@@ -2,23 +2,22 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { scrollToId } from '@/hooks/use-lenis'
 import { btnPrimary, btnSecondaryDark } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 import { EASE } from './shared'
 
-const H1_WORDS = ['„მსოფლიო', 'დონის', 'განათლება', '—', 'კავკასიაში"']
-
-function WordStagger() {
+function WordStagger({ words }: { words: string[] }) {
   return (
     <>
-      {H1_WORDS.map((word, i) => (
+      {words.map((word, i) => (
         <span key={i} className="inline-block overflow-hidden pb-1 align-bottom">
           <motion.span
-            className={`inline-block ${i === H1_WORDS.length - 1 ? 'text-gold-400' : ''}`}
+            className={`inline-block ${i === words.length - 1 ? 'text-gold-400' : ''}`}
             initial={{ y: 36, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.15 + i * 0.08, duration: 0.9, ease: EASE }}
           >
             {word}
-            {i < H1_WORDS.length - 1 ? ' ' : ''}
+            {i < words.length - 1 ? ' ' : ''}
           </motion.span>
         </span>
       ))}
@@ -27,6 +26,7 @@ function WordStagger() {
 }
 
 export default function EduHero() {
+  const { d } = useLang()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   // parallax: top image 0.25x, bottom image 0.45x
@@ -49,10 +49,10 @@ export default function EduHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            — განათლება და სერტიფიცირება —
+            {d.education.hero.eyebrow}
           </motion.p>
           <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.12] tracking-[-0.01em] text-milk lg:text-[56px]">
-            <WordStagger />
+            <WordStagger words={d.education.hero.h1} />
           </h1>
           <motion.p
             className="mt-6 text-base leading-[1.7] text-milk/80 lg:text-lg"
@@ -60,12 +60,11 @@ export default function EduHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: EASE }}
           >
-            OenoHub.ge არის{' '}
+            {d.education.hero.subPre}
             <strong className="font-semibold text-gold-400">International Sommelier Guild</strong>
-            -ისა და{' '}
+            {d.education.hero.subMid1}
             <strong className="font-semibold text-gold-400">Edinburgh Whisky Academy</strong>
-            -ის ოფიციალური ფრანჩაიზის მფლობელი კავკასიის რეგიონში. საერთაშორისო დიპლომები და
-            პროფესიული სტანდარტები — ადგილზე, ქართულად.
+            {d.education.hero.subMid2}
           </motion.p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
             <motion.button
@@ -76,7 +75,7 @@ export default function EduHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.7, ease: EASE }}
             >
-              სომელიეს პროგრამები
+              {d.education.hero.primary}
             </motion.button>
             <motion.button
               type="button"
@@ -86,7 +85,7 @@ export default function EduHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.7, ease: EASE }}
             >
-              ვისკის კურსები
+              {d.education.hero.secondary}
             </motion.button>
           </div>
         </div>
@@ -104,7 +103,7 @@ export default function EduHero() {
             >
               <img
                 src="/edu-sommelier.png"
-                alt="სომელიე ღვინის ბოკალით მუქ მარანში"
+                alt={d.education.hero.alt1}
                 className="aspect-[3/2] w-full object-cover"
               />
             </motion.div>
@@ -120,7 +119,7 @@ export default function EduHero() {
             >
               <img
                 src="/edu-whisky.png"
-                alt="ვისკის ჭიქები მურა მურა მაგიდაზე"
+                alt={d.education.hero.alt2}
                 className="aspect-[3/2] w-full object-cover"
               />
             </motion.div>

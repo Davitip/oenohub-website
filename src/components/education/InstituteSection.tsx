@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { memo } from 'react'
 import { Link } from 'react-router'
+import { useLang } from '@/i18n/LanguageContext'
 import { btnPrimary } from '@/lib/styles'
 import { EASE, fadeUpItem, staggerContainer } from './shared'
 
@@ -73,6 +74,7 @@ export default function InstituteSection({
   mirrored = false,
   amberGlow = false,
 }: InstituteSectionProps) {
+  const { d } = useLang()
   return (
     <section
       id={id}
@@ -133,13 +135,13 @@ export default function InstituteSection({
             variants={fadeUpItem}
             className="inline-block rounded-full bg-gold-500 px-4 py-1.5 text-[11px] font-semibold tracking-[0.06em] text-burgundy-950"
           >
-            ოფიციალური ფრანჩაიზი · კავკასიის რეგიონი
+            {d.education.franchiseBadge}
           </motion.span>
           <motion.h2
             variants={fadeUpItem}
             className="mt-5 font-serif text-3xl font-semibold leading-[1.15] text-milk lg:text-[44px]"
           >
-            „{title}"
+            {d.education.quoteOpen}{title}{d.education.quoteClose}
           </motion.h2>
           <motion.p variants={fadeUpItem} className="mt-5 max-w-[62ch] leading-[1.7] text-milk/80">
             {lead}
@@ -180,7 +182,7 @@ export default function InstituteSection({
 
           <motion.div variants={fadeUpItem} className="mt-9">
             <Link to="/contact" className={btnPrimary}>
-              მოითხოვე პროგრამა
+              {d.education.programCta}
             </Link>
           </motion.div>
         </motion.div>

@@ -1,15 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Facebook, Instagram, Linkedin } from 'lucide-react'
 import { Link } from 'react-router'
+import { useLang } from '@/i18n/LanguageContext'
 import { COMPANIES } from '@/lib/companies'
-
-const NAV_LINKS = [
-  { to: '/', label: 'მთავარი' },
-  { to: '/ecosystem', label: 'ეკოსისტემა' },
-  { to: '/education', label: 'განათლება' },
-  { to: '/about', label: 'ჩვენ შესახებ' },
-  { to: '/contact', label: 'კონტაქტი' },
-]
 
 const SOCIALS = [
   { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' },
@@ -27,6 +20,14 @@ const item = {
 }
 
 export default function Footer() {
+  const { d } = useLang()
+  const NAV_LINKS = [
+    { to: '/', label: d.nav.home },
+    { to: '/ecosystem', label: d.nav.ecosystem },
+    { to: '/education', label: d.nav.education },
+    { to: '/about', label: d.nav.about },
+    { to: '/contact', label: d.nav.contact },
+  ]
   return (
     <footer className="relative bg-burgundy-950 text-milk">
       <div className="h-px w-full bg-gold-line" aria-hidden="true" />
@@ -41,7 +42,7 @@ export default function Footer() {
         <motion.div variants={item} className="flex flex-col gap-5">
           <img src="/logo.svg" alt="OenoHub.ge" className="h-8 w-auto self-start" />
           <p className="max-w-xs text-sm leading-relaxed text-milk/70">
-            ღვინისა და აგრო ინდუსტრიის ერთიანი ეკოსისტემა — ვენახიდან ბოკალამდე, ერთი ბრენდის ქვეშ.
+            {d.footer.tagline}
           </p>
           <div className="flex gap-3">
             {SOCIALS.map((s) => (
@@ -62,7 +63,7 @@ export default function Footer() {
         {/* ecosystem companies */}
         <motion.div variants={item}>
           <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gold-400">
-            ეკოსისტემა
+            {d.footer.ecosystem}
           </h3>
           <ul className="grid grid-cols-1 gap-2.5 text-sm">
             {COMPANIES.map((c) => (
@@ -84,7 +85,7 @@ export default function Footer() {
         {/* navigation */}
         <motion.div variants={item}>
           <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gold-400">
-            ნავიგაცია
+            {d.footer.navigation}
           </h3>
           <ul className="flex flex-col gap-2.5 text-sm">
             {NAV_LINKS.map((l) => (
@@ -100,10 +101,10 @@ export default function Footer() {
         {/* contact */}
         <motion.div variants={item}>
           <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-gold-400">
-            კონტაქტი
+            {d.footer.contact}
           </h3>
           <ul className="flex flex-col gap-2.5 text-sm text-milk/70">
-            <li>თბილისი, საქართველო</li>
+            <li>{d.footer.city}</li>
             <li>
               <a href="mailto:info@oenohub.ge" className="transition-colors hover:text-gold-400">
                 info@oenohub.ge
@@ -120,10 +121,8 @@ export default function Footer() {
 
       <div className="border-t border-gold-500/15">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-2 px-6 py-6 text-xs text-milk/50 sm:flex-row sm:items-center sm:justify-between lg:px-12">
-          <span>© 2025 OenoHub.ge — ყველა უფლება დაცულია</span>
-          <span>
-            ფრანჩაიზები: International Sommelier Guild · Edinburgh Whisky Academy
-          </span>
+          <span>{d.footer.rights}</span>
+          <span>{d.footer.franchises}</span>
         </div>
       </div>
     </footer>

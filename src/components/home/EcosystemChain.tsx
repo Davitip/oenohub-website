@@ -2,31 +2,10 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-const STAGES = [
-  {
-    title: 'ტექნოლოგია და AI',
-    companies: 'Winelens.ge · VineAI.ge · AgroAI.ge · Oeno.ge',
-    text: 'ციფრული ინსტრუმენტები ვენახის მონიტორინგის, ღვინის დაყენების პროტოკოლებისა და აგრო-ანალიტიკისთვის.',
-  },
-  {
-    title: 'წარმოება და ტარა',
-    companies: 'Vidrala.ge · AggloTap.ge · PortugalCork.ge · Filtrox.ge',
-    text: 'მინის ბოთლები, ბუნებრივი და აგლომერირებული საცობები, ფილტრაციის სისტემები — ევროპული ხარისხი.',
-  },
-  {
-    title: 'ლოგისტიკა და სერვისები',
-    companies: 'Primelogistics.ge · GS Consulting',
-    text: 'საწყობის მართვა, 3PL სერვისები და სტრატეგიული კონსალტინგი ბაზარზე გასასვლელად.',
-  },
-  {
-    title: 'განათლება',
-    companies: 'International Sommelier Guild · Edinburgh Whisky Academy',
-    text: 'საერთაშორისო სერტიფიცირება სომელიეებისა და ვისკის სპეციალისტებისთვის კავკასიის რეგიონში.',
-  },
-]
 
 // node positions on a 240-radius circle inside a 600 viewBox (top, right, bottom, left)
 const NODES = [
@@ -81,6 +60,8 @@ const NODE_ICONS = [
 ]
 
 export default function EcosystemChain() {
+  const { d } = useLang()
+  const STAGES = d.home.chain.stages
   const sectionRef = useRef<HTMLElement>(null)
   const pinRef = useRef<HTMLDivElement>(null)
 
@@ -185,12 +166,12 @@ export default function EcosystemChain() {
           <div>
             <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
               <span className="inline-block h-px w-8 bg-gold-500" />
-              როგორ მუშაობს ეკოსისტემა
+              {d.home.chain.eyebrow}
             </p>
             <h2 className="mb-8 font-serif text-4xl font-semibold text-milk">
-              სრული ჯაჭვი, ერთი პასუხისმგებლობა
+              {d.home.chain.heading}
             </h2>
-            <svg viewBox="0 0 600 600" className="w-full max-w-[520px]" role="img" aria-label="ეკოსისტემის ჯაჭვის დიაგრამა">
+            <svg viewBox="0 0 600 600" className="w-full max-w-[520px]" role="img" aria-label={d.home.chain.diagramAria}>
               <circle cx={300} cy={300} r={240} fill="none" stroke="#C9A227" strokeWidth={1} opacity={0.25} />
               <circle cx={300} cy={300} r={120} fill="none" stroke="#C9A227" strokeWidth={0.7} opacity={0.2} />
               {ARCS.map((d, i) => (
@@ -249,10 +230,10 @@ export default function EcosystemChain() {
       <div className="mx-auto max-w-[1280px] px-6 py-20 lg:hidden">
         <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
           <span className="inline-block h-px w-8 bg-gold-500" />
-          როგორ მუშაობს ეკოსისტემა
+          {d.home.chain.eyebrow}
         </p>
         <h2 className="mb-10 font-serif text-3xl font-semibold text-milk">
-          სრული ჯაჭვი, ერთი პასუხისმგებლობა
+          {d.home.chain.heading}
         </h2>
         <div className="flex flex-col gap-6">
           {STAGES.map((s, i) => (

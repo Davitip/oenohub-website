@@ -1,12 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const LABELS = ['ტექნოლოგია', 'წარმოება', 'ტარა', 'ლოგისტიკა', 'განათლება']
-
 /** label positions on a circle, starting at top, every 72° */
-const POSITIONS = LABELS.map((_, i) => {
+const POSITIONS = Array.from({ length: 5 }, (_, i) => {
   const angle = ((-90 + i * 72) * Math.PI) / 180
   return {
     left: `${50 + Math.cos(angle) * 50}%`,
@@ -15,6 +14,8 @@ const POSITIONS = LABELS.map((_, i) => {
 })
 
 export default function PhilosophyRing() {
+  const { d } = useLang()
+  const LABELS = d.about.ring.labels
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   // slow rotate-on-scroll, scrubbed 0→90deg
@@ -35,8 +36,8 @@ export default function PhilosophyRing() {
           transition={{ duration: 0.8, ease: EASE }}
           className="mx-auto max-w-3xl font-serif text-3xl font-semibold leading-[1.15] text-milk lg:text-[44px]"
         >
-          წრე, რომელიც არ <span className="font-display italic text-gold-400">იწყება</span> და არ{' '}
-          <span className="font-display italic text-gold-400">მთავრდება</span>
+          {d.about.ring.headingPre}<span className="font-display italic text-gold-400">{d.about.ring.italic1}</span>{d.about.ring.headingMid}
+          <span className="font-display italic text-gold-400">{d.about.ring.italic2}</span>
         </motion.h2>
 
         {/* ring diagram with orbiting labels */}
@@ -50,7 +51,7 @@ export default function PhilosophyRing() {
           />
           <motion.img
             src="/ecosystem-ring.svg"
-            alt="OenoHub.ge ეკოსისტემის რგოლის დიაგრამა"
+            alt={d.about.ring.alt}
             className="absolute inset-0 m-auto h-[86%] w-[86%]"
             style={{ rotate }}
           />
@@ -76,9 +77,7 @@ export default function PhilosophyRing() {
           transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
           className="mx-auto mt-14 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
         >
-          ჩვენი ეკოსისტემა ხაზოვანი არაა — ის წრიულია. განათლება ქმნის პროფესიონალებს, რომლებიც
-          იყენებენ ჩვენ ტექნოლოგიას; ტექნოლოგია ზრდის წარმოებას; წარმოებას სჭირდება ტარა და
-          ლოგისტიკა — და ყველაფერი კვლავ უბრუნდება ცოდნას.
+          {d.about.ring.text}
         </motion.p>
       </div>
     </section>

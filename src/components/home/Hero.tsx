@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Component, lazy, Suspense, useRef, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { scrollToId } from '@/hooks/use-lenis'
+import { useLang } from '@/i18n/LanguageContext'
 import { btnPrimary, btnSecondaryDark } from '@/lib/styles'
 
 const WineMist = lazy(() => import('./WineMist'))
@@ -40,19 +41,17 @@ function WordReveal({ words, delay }: { words: { text: string; gold?: boolean }[
 }
 
 export default function Hero() {
+  const { d } = useLang()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   // background 0.35x, content 0.85x parallax
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
 
-  const h1Words = [
-    { text: '„ვენახიდან' },
-    { text: 'ბოკალამდე' },
-    { text: '—' },
-    { text: 'ერთი' },
-    { text: 'ეკოსისტემა"', gold: true },
-  ]
+  const h1Words = d.home.hero.h1.map((text, i) => ({
+    text,
+    gold: i === d.home.hero.h1.length - 1,
+  }))
 
   return (
     <section
@@ -109,7 +108,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            ღვინის ინდუსტრიის ერთიანი ეკოსისტემა
+            {d.home.hero.eyebrow}
           </motion.span>
           <motion.span
             className="h-px w-10 origin-left bg-gold-500"
@@ -129,8 +128,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7, ease: EASE }}
         >
-          OenoHub.ge აერთიანებს ღვინისა და აგრო ინდუსტრიის სრულ ჯაჭვს: ტექნოლოგიას,
-          წარმოებასა და ტარას, ლოგისტიკასა და განათლებას — 10 კომპანია, ერთი ხედვა.
+          {d.home.hero.sub}
         </motion.p>
 
         <motion.div
@@ -151,7 +149,7 @@ export default function Hero() {
               show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
             }}
           >
-            გაიცანი ეკოსისტემა
+            {d.home.hero.ctaPrimary}
           </motion.button>
           <motion.div
             variants={{
@@ -160,7 +158,7 @@ export default function Hero() {
             }}
           >
             <Link to="/education" className={btnSecondaryDark}>
-              განათლება და ფრანჩაიზები
+              {d.home.hero.ctaSecondary}
             </Link>
           </motion.div>
         </motion.div>
@@ -174,10 +172,10 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.8 }}
-        aria-label="ჩამოსქროლე"
+        aria-label={d.home.hero.scroll}
       >
         <span className="text-[11px] font-medium tracking-[0.2em] text-gold-400/80">
-          ჩამოსქროლე
+          {d.home.hero.scroll}
         </span>
         <span className="animate-scroll-bounce block h-10 w-px bg-gradient-to-b from-gold-500 to-transparent" />
       </motion.button>

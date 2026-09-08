@@ -1,38 +1,14 @@
 import { motion } from 'framer-motion'
 import { GlassWater, Grape, TrendingUp, UtensilsCrossed } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { useLang } from '@/i18n/LanguageContext'
 import { EASE } from './shared'
 
-interface Audience {
-  icon: LucideIcon
-  title: string
-  desc: string
-}
-
-const AUDIENCES: Audience[] = [
-  {
-    icon: UtensilsCrossed,
-    title: 'HoReCa პროფესიონალები',
-    desc: 'მიმტანები, ბარმენები, რესტორნის მენეჯერები',
-  },
-  {
-    icon: Grape,
-    title: 'ღვინის ინდუსტრია',
-    desc: 'მეღვინეები, დისტრიბუტორები, იმპორტიორები',
-  },
-  {
-    icon: GlassWater,
-    title: 'ენთუზიასტები',
-    desc: 'ღვინისა და ვისკის მოყვარულები, სიღრმის ეძებში',
-  },
-  {
-    icon: TrendingUp,
-    title: 'კარიერის მშენებლები',
-    desc: 'ვინც ინდუსტრიაში პროფესიული ნაბიჯის გადადგმას გეგმავს',
-  },
-]
+const AUDIENCE_ICONS: LucideIcon[] = [UtensilsCrossed, Grape, GlassWater, TrendingUp]
 
 export default function AudienceGrid() {
+  const { d } = useLang()
+  const AUDIENCES = AUDIENCE_ICONS.map((icon, i) => ({ icon, ...d.education.audience.items[i] }))
   return (
     <section className="bg-cream-50 py-[72px] lg:py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-12">
@@ -45,7 +21,7 @@ export default function AudienceGrid() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            — აუდიტორია —
+            {d.education.audience.eyebrow}
           </motion.p>
           <motion.h2
             className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
@@ -54,7 +30,7 @@ export default function AudienceGrid() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ delay: 0.1, duration: 0.8, ease: EASE }}
           >
-            „ვისთვისაა ეს პროგრამები"
+            {d.education.audience.heading}
           </motion.h2>
           <motion.div
             className="mx-auto mt-6 h-px w-24 origin-center bg-gold-line"

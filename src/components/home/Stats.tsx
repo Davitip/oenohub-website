@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion'
 import Counter from '@/components/Counter'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const STATS = [
-  { value: 10, label: 'კომპანია ეკოსისტემაში' },
-  { value: 4, label: 'ინდუსტრიის მიმართულება' },
-  { value: 2, label: 'საერთაშორისო ფრანჩაიზა' },
-  { value: 1, label: 'ერთიანი პლატფორმა' },
-]
+const VALUES = [10, 4, 2, 1]
 
 export default function Stats() {
+  const { d } = useLang()
+  const STATS = VALUES.map((value, i) => ({ value, label: d.home.stats[i] }))
   return (
     <section className="bg-cream-100 py-[72px] lg:py-24">
       <motion.div

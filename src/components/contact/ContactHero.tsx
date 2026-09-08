@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 export default function ContactHero() {
+  const { d } = useLang()
   return (
     <section
       data-theme="dark"
@@ -16,7 +18,7 @@ export default function ContactHero() {
           transition={{ duration: 0.7, ease: EASE }}
           className="text-xs font-semibold tracking-[0.22em] text-gold-400"
         >
-          — კონტაქტი —
+          {d.contact.hero.eyebrow}
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
@@ -24,7 +26,7 @@ export default function ContactHero() {
           transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
           className="mt-6 font-serif text-4xl font-semibold leading-[1.12] tracking-[-0.01em] text-milk lg:text-[56px]"
         >
-          დაგვიკავშირდი
+          {d.contact.hero.h1}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -32,8 +34,7 @@ export default function ContactHero() {
           transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
           className="mx-auto mt-5 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
         >
-          გინდა შეუერთდე ეკოსისტემას, შეუკვეთო ტარა, გაიარო სერტიფიცირება თუ გჭირდება კონსულტაცია —
-          ერთი შეტყობინება საკმარისია.
+          {d.contact.hero.sub}
         </motion.p>
       </div>
     </section>

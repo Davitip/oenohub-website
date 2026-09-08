@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router'
+import { useLang } from '@/i18n/LanguageContext'
 import { COMPANIES } from '@/lib/companies'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
@@ -14,6 +15,7 @@ const rowClass =
   'group flex items-center gap-4 border-b border-cream-200 px-2 py-4 transition-colors duration-300 hover:bg-cream-100'
 
 export default function CompanyDirectory() {
+  const { d } = useLang()
   return (
     <section className="bg-cream-50 pb-[72px] lg:pb-[120px]">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-12">
@@ -26,7 +28,7 @@ export default function CompanyDirectory() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-xs font-semibold tracking-[0.22em] text-gold-500"
           >
-            — სწრაფი მიმართვა —
+            {d.contact.directory.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 32 }}
@@ -35,7 +37,7 @@ export default function CompanyDirectory() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
-            პირდაპირ კომპანიას
+            {d.contact.directory.heading}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +46,7 @@ export default function CompanyDirectory() {
             transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
             className="mt-4 max-w-[62ch] text-lg leading-[1.7] text-ink-600"
           >
-            იცი ზუსტად რა გჭირდება? აირჩიე კომპანია და გადადი პირდაპირ მის საიტზე.
+            {d.contact.directory.text}
           </motion.p>
         </div>
 

@@ -1,23 +1,11 @@
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 import { EASE } from './shared'
 
-const STEPS = [
-  { num: '01', title: 'განაცხადი', desc: 'შეავსე ფორმა ან დაგვიკავშირდი პირდაპირ.' },
-  {
-    num: '02',
-    title: 'კონსულტაცია',
-    desc: 'ვათავისუფლებთ შესაბამის პროგრამასა და ჯგუფს.',
-  },
-  { num: '03', title: 'სწავლება', desc: 'თეორიული და პრაქტიკული სესიები თბილისში.' },
-  {
-    num: '04',
-    title: 'სერტიფიკატი',
-    desc: 'საერთაშორისო დიპლომი ISG-სგან ან EWA-სგან.',
-  },
-]
-
 export default function EnrollmentSteps() {
+  const { d } = useLang()
+  const STEPS = d.education.steps.items.map((it, i) => ({ num: `0${i + 1}`, ...it }))
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -38,7 +26,7 @@ export default function EnrollmentSteps() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ duration: 0.7, ease: EASE }}
           >
-            — პროცესი —
+            {d.education.steps.eyebrow}
           </motion.p>
           <motion.h2
             className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
@@ -47,7 +35,7 @@ export default function EnrollmentSteps() {
             viewport={{ once: true, margin: '-15% 0px' }}
             transition={{ delay: 0.1, duration: 0.8, ease: EASE }}
           >
-            „როგორ ჩაეწერო"
+            {d.education.steps.heading}
           </motion.h2>
         </div>
 

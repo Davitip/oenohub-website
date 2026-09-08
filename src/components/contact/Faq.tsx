@@ -1,36 +1,12 @@
 import { motion } from 'framer-motion'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const FAQS = [
-  {
-    q: 'რა არის OenoHub.ge?',
-    a: 'ერთიანი ეკოსისტემის პლატფორმა, რომელიც აერთიანებს ღვინისა და აგრო ინდუსტრიის 10 კომპანიას და ორ საერთაშორისო საგანმანათლებლო ფრანჩაიზას — ტექნოლოგიიდან განათლებამდე.',
-  },
-  {
-    q: 'როგორ შევუკვეთო ტარა (ბოთლები, საცობები)?',
-    a: 'აირჩიე შესაბამისი კომპანია (Vidrala.ge, AggloTap.ge, PortugalCork.ge) და გადადი მის საიტზე, ან მოგვწერე აქ — გადავამისამართებთ სწორ გუნდთან.',
-  },
-  {
-    q: 'სად ტარდება სომელიეს და ვისკის კურსები?',
-    a: 'თბილისში, OenoHub.ge-ს სასწავლო სივრცეში. ჩვენ ვართ International Sommelier Guild-ისა და Edinburgh Whisky Academy-ს ოფიციალური ფრანჩაიზის მფლობელი კავკასიის რეგიონში.',
-  },
-  {
-    q: 'გაიცემა თუ არა საერთაშორისო სერტიფიკატი?',
-    a: 'დიახ. ISG-ს და EWA-ს პროგრამების დასრულებისას მიიღებ შესაბამისი ორგანიზაციის ოფიციალურ, საერთაშორისოდ აღიარებულ სერტიფიკატს.',
-  },
-  {
-    q: 'ვარ ფერმერი — რომელი სერვისი მეხმარება?',
-    a: 'AgroAI.ge (მავნებლების ამოცნობა და რჩევები) და VineAI.ge (მევენახეობისთვის), ხოლო წარმოებისა და რეალიზაციისთვის — ეკოსისტემის დანარჩენი კომპანიები.',
-  },
-  {
-    q: 'შეიძლება თუ არა პარტნიორობა ეკოსისტემასთან?',
-    a: 'დიახ, ღია ვართ თანამშრომლობისთვის. აირჩიე ფორმაში თემა „პარტნიორობა" ან მოგვწერე info@oenohub.ge-ზე.',
-  },
-]
-
 export default function Faq() {
+  const { d } = useLang()
+  const FAQS = d.contact.faq.items
   return (
     <section className="bg-cream-100 py-[72px] lg:py-[120px]">
       <div className="mx-auto max-w-[800px] px-6">
@@ -42,7 +18,7 @@ export default function Faq() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-xs font-semibold tracking-[0.22em] text-gold-500"
           >
-            — კითხვები —
+            {d.contact.faq.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 32 }}
@@ -51,7 +27,7 @@ export default function Faq() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
-            ხშირად დასმული კითხვები
+            {d.contact.faq.heading}
           </motion.h2>
         </div>
 

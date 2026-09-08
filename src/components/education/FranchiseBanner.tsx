@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import { BadgeCheck } from 'lucide-react'
+import { useLang } from '@/i18n/LanguageContext'
 import { EASE } from './shared'
 
 const PILLS = ['International Sommelier Guild', 'Edinburgh Whisky Academy']
 
 export default function FranchiseBanner() {
+  const { d } = useLang()
   return (
     <section data-theme="dark" className="relative overflow-hidden">
       <motion.div
@@ -24,7 +26,7 @@ export default function FranchiseBanner() {
           >
             <BadgeCheck className="h-8 w-8 shrink-0" strokeWidth={1.8} aria-hidden="true" />
             <p className="font-serif text-lg font-semibold leading-snug sm:text-[22px]">
-              „OenoHub.ge — ოფიციალური ფრანჩაიზის მფლობელი კავკასიის რეგიონში"
+              {d.education.banner.text}
             </p>
           </motion.div>
           <div className="flex flex-wrap items-center justify-center gap-3">

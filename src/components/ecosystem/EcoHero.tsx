@@ -1,16 +1,17 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 import { ECO_CATEGORIES, type EcoCategoryId } from './eco-data'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
-
-const H1_WORDS = ['„10', 'კომპანია,', 'ერთი', 'ხედვა"']
 
 interface EcoHeroProps {
   onNavigate: (category: EcoCategoryId) => void
 }
 
 export default function EcoHero({ onNavigate }: EcoHeroProps) {
+  const { d } = useLang()
+  const H1_WORDS = d.eco.hero.h1
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   // background parallax 0.4x
@@ -48,7 +49,7 @@ export default function EcoHero({ onNavigate }: EcoHeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
         >
-          — ეკოსისტემა —
+          {d.eco.hero.eyebrow}
         </motion.p>
 
         <h1 className="mt-5 font-serif text-[40px] font-semibold leading-[1.12] tracking-[-0.01em] text-milk md:text-[56px]">
@@ -73,8 +74,7 @@ export default function EcoHero({ onNavigate }: EcoHeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8, ease: EASE }}
         >
-          OenoHub.ge-ს ეკოსისტემა ფარავს ღვინისა და აგრო ინდუსტრიის სრულ ჯაჭვს — ტექნოლოგიიდან
-          ვენახში, წარმოებასა და ტარაში, ლოგისტიკითა და საერთაშორისო განათლებით დასრულებული.
+          {d.eco.hero.sub}
         </motion.p>
 
         {/* category anchor pills */}
@@ -89,7 +89,7 @@ export default function EcoHero({ onNavigate }: EcoHeroProps) {
               transition={{ delay: 0.9 + i * 0.08, duration: 0.6, ease: EASE }}
               className="rounded-full border border-gold-500/40 px-5 py-2 text-sm font-medium text-milk/80 transition-all duration-300 hover:border-gold-500 hover:bg-gold-500/10 hover:text-gold-300"
             >
-              {cat.badge}
+              {d.eco.categories[cat.id].badge}
             </motion.button>
           ))}
         </div>

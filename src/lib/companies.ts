@@ -1,18 +1,22 @@
 export type CompanyCategory = 'tech' | 'packaging' | 'logistics' | 'education'
+export type CompanyId =
+  | 'winelens'
+  | 'vineai'
+  | 'agroai'
+  | 'oeno'
+  | 'vidrala'
+  | 'agglotap'
+  | 'portugaliacork'
+  | 'filtrox'
+  | 'primelogistics'
+  | 'gs'
 
 export interface Company {
+  id: CompanyId
   name: string
   logo: string
-  description: string
   category: CompanyCategory
   url: string
-}
-
-export const CATEGORY_LABELS: Record<CompanyCategory, string> = {
-  tech: 'ტექნოლოგია და AI',
-  packaging: 'ტარა და წარმოება',
-  logistics: 'ლოგისტიკა და სერვისები',
-  education: 'განათლება',
 }
 
 /** Accent color per category (badge / card top strip) */
@@ -25,72 +29,72 @@ export const CATEGORY_COLORS: Record<CompanyCategory, string> = {
 
 export const COMPANIES: Company[] = [
   {
+    id: 'winelens',
     name: 'Winelens.ge',
     logo: '/logo-winelens.svg',
-    description: 'ღვინის ციფრული ანალიტიკისა და მართვის პლატფორმა მეღვინეებისთვის.',
     category: 'tech',
     url: 'https://winelens.ge',
   },
   {
+    id: 'vineai',
     name: 'VineAI.ge',
     logo: '/logo-vineai.svg',
-    description: 'AI-დამხმარე მევენახეობისთვის: მონიტორინგი, დიაგნოსტიკა, 21 მოდული.',
     category: 'tech',
     url: 'https://vineai.ge',
   },
   {
+    id: 'agroai',
     name: 'AgroAI.ge',
     logo: '/logo-agroai.svg',
-    description: 'აგრო AI პლატფორმა მთელი სოფლის მეურნეობისთვის.',
     category: 'tech',
     url: 'https://agroai.ge',
   },
   {
+    id: 'oeno',
     name: 'Oeno.ge',
     logo: '/logo-oeno.svg',
-    description: 'ენოლოგიური ციფრული პლატფორმა და პროდუქტების კატალოგი.',
     category: 'tech',
     url: 'https://oeno.ge',
   },
   {
+    id: 'vidrala',
     name: 'Vidrala.ge',
     logo: '/logo-vidrala.svg',
-    description: 'პრემიუმ მინის ტარა: ღვინის ბოთლები ნებისმიერი ფორმისა და მოცულობის.',
     category: 'packaging',
     url: 'https://vidrala.ge',
   },
   {
+    id: 'agglotap',
     name: 'AggloTap.ge',
     logo: '/logo-agglotap.svg',
-    description: 'აგლომერირებული საცობები ღვინის დახურვისთვის.',
     category: 'packaging',
     url: 'https://agglotap.ge',
   },
   {
+    id: 'portugaliacork',
     name: 'PortugalCork.ge',
     logo: '/logo-portugaliacork.svg',
-    description: 'პორტუგალიური ბუნებრივი ქორქი — პრემიუმ საცობები.',
     category: 'packaging',
     url: 'https://portugaliacork.ge',
   },
   {
+    id: 'filtrox',
     name: 'Filtrox.ge',
     logo: '/logo-filtrox.svg',
-    description: 'ფილტრაციის სისტემები ღვინისა და სასმელების ინდუსტრიისთვის.',
     category: 'packaging',
     url: 'https://filtrox.ge',
   },
   {
+    id: 'primelogistics',
     name: 'Primelogistics.ge',
     logo: '/logo-primelogistics.svg',
-    description: 'ლოგისტიკა, 200 მ² საწყობი, 3PL სერვისები.',
     category: 'logistics',
     url: 'https://primelogistics.ge',
   },
   {
+    id: 'gs',
     name: 'GS Consulting',
     logo: '/logo-gs.svg',
-    description: 'სტრატეგია და კონსალტინგი ღვინისა და აგრო ბიზნესისთვის.',
     category: 'logistics',
     url: 'https://gsconsulting.ge',
   },

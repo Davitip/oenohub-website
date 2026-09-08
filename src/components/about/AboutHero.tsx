@@ -1,11 +1,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const TITLE_WORDS = ['ერთი', 'ბრენდი', '—', 'მთელი', 'ინდუსტრია']
-
 export default function AboutHero() {
+  const { d } = useLang()
+  const TITLE_WORDS = d.about.hero.title
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   // slow background parallax 0.35x
@@ -41,7 +42,7 @@ export default function AboutHero() {
           transition={{ duration: 0.7, ease: EASE }}
           className="text-xs font-semibold tracking-[0.22em] text-gold-400"
         >
-          — ჩვენ შესახებ —
+          {d.about.hero.eyebrow}
         </motion.p>
         <h1 className="mt-6 font-serif text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-milk lg:text-6xl">
           {TITLE_WORDS.map((w, i) => (
@@ -62,8 +63,7 @@ export default function AboutHero() {
           transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
           className="mx-auto mt-6 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
         >
-          OenoHub.ge დაიბადა მარტივი აზრით: ქართული ღვინის ინდუსტრია იმსახურებს ერთიან,
-          თანამედროვე და ერთმანეთთან დაკავშირებულ ეკოსისტემას — ვენახიდან ბოკალამდე.
+          {d.about.hero.sub}
         </motion.p>
       </div>
     </section>

@@ -3,6 +3,7 @@ import { memo, useRef } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { btnPrimary, btnSecondaryDark } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 import { EASE } from './shared'
 
 /** Subtle gold glow pulse on the primary CTA — isolated & memoized perpetual animation. */
@@ -25,6 +26,7 @@ const GlowPulse = memo(function GlowPulse({ children }: { children: ReactNode })
 })
 
 export default function EduCta() {
+  const { d } = useLang()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const rotate = useTransform(scrollYProgress, [0, 1], [-10, 12])
@@ -52,19 +54,19 @@ export default function EduCta() {
         transition={{ duration: 0.8, ease: EASE }}
       >
         <h2 className="font-serif text-3xl font-semibold text-milk lg:text-[44px] lg:leading-[1.15]">
-          დაიწყე შენი <span className="font-display italic text-gold-400">პროფესიული</span> გზა
+          {d.education.cta.headingPre}<span className="font-display italic text-gold-400">{d.education.cta.headingItalic}</span>{d.education.cta.headingPost}
         </h2>
         <p className="mx-auto mt-5 max-w-[56ch] leading-[1.7] text-milk/80">
-          სომელიერობა თუ ვისკი — ორივე მიმართულება იწყება ერთი განაცხადით.
+          {d.education.cta.text}
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <GlowPulse>
             <Link to="/contact" className={btnPrimary}>
-              განაცხადის გაგზავნა
+              {d.education.cta.primary}
             </Link>
           </GlowPulse>
           <Link to="/ecosystem" className={btnSecondaryDark}>
-            ეკოსისტემის ნახვა
+            {d.education.cta.secondary}
           </Link>
         </div>
       </motion.div>

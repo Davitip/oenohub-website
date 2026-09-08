@@ -2,10 +2,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router'
 import { btnPrimary } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 export default function EcoCta() {
+  const { d } = useLang()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const rotate = useTransform(scrollYProgress, [0, 1], [-10, 12])
@@ -33,15 +35,14 @@ export default function EcoCta() {
         transition={{ duration: 0.8, ease: EASE }}
       >
         <h2 className="font-serif text-3xl font-semibold text-milk lg:text-[44px] lg:leading-[1.15]">
-          არ იცი <span className="font-display italic text-gold-400">საიდან დაიწყო?</span>
+          {d.eco.cta.headingPre}<span className="font-display italic text-gold-400">{d.eco.cta.headingItalic}</span>
         </h2>
         <p className="mx-auto mt-5 max-w-[56ch] leading-[1.7] text-milk/80">
-          მოგვწერე — გირჩევთ ეკოსისტემის რომელი კომპანია ან კომბინაცია ზუსტად შენს საჭიროებას
-          ფარავს.
+          {d.eco.cta.text}
         </p>
         <div className="mt-9 flex justify-center">
           <Link to="/contact" className={btnPrimary}>
-            დაგვიკავშირდი
+            {d.eco.cta.primary}
           </Link>
         </div>
       </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import CompanyCard from './CompanyCard'
+import { useLang } from '@/i18n/LanguageContext'
 import { companiesByCategory, type EcoCategory, type EcoCompany } from './eco-data'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
@@ -10,6 +11,8 @@ interface CategorySectionProps {
 }
 
 export default function CategorySection({ category, onDetails }: CategorySectionProps) {
+  const { d } = useLang()
+  const copy = d.eco.categories[category.id]
   const companies = companiesByCategory(category.id)
 
   return (
@@ -39,12 +42,12 @@ export default function CategorySection({ category, onDetails }: CategorySection
           <span
             className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.06em] ${category.badgeClass}`}
           >
-            {category.badge}
+            {copy.badge}
           </span>
           <h2 className="mt-5 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]">
-            {category.heading}
+            {copy.heading}
           </h2>
-          <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-600">{category.blurb}</p>
+          <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-600">{copy.blurb}</p>
           <motion.div
             className="mt-6 h-px w-24 origin-left bg-gold-500"
             initial={{ scaleX: 0 }}
@@ -60,7 +63,7 @@ export default function CategorySection({ category, onDetails }: CategorySection
             <CompanyCard
               key={company.id}
               company={company}
-              badge={category.badge}
+              badge={copy.badge}
               badgeClass={category.badgeClass}
               cardClass={category.cardClass}
               index={i}

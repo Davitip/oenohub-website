@@ -1,17 +1,24 @@
 import { motion } from 'framer-motion'
 import { Cpu, GraduationCap, Network, Warehouse } from 'lucide-react'
 import Counter from '@/components/Counter'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const FACTS = [
-  { icon: Network, value: 10, suffix: '', label: 'ეკოსისტემის კომპანია' },
-  { icon: GraduationCap, value: 2, suffix: '', label: 'საერთაშორისო ფრანჩაიზა' },
-  { icon: Warehouse, value: 200, suffix: ' მ²', label: 'საწყობის ფართი' },
-  { icon: Cpu, value: 21, suffix: '', label: 'AI მოდული მევენახეობისთვის' },
+const FACT_META = [
+  { icon: Network, value: 10, suffix: '' },
+  { icon: GraduationCap, value: 2, suffix: '' },
+  { icon: Warehouse, value: 200, suffix: '' },
+  { icon: Cpu, value: 21, suffix: '' },
 ]
 
 export default function TrustStrip() {
+  const { d } = useLang()
+  const FACTS = FACT_META.map((f, i) => ({
+    ...f,
+    suffix: f.value === 200 ? d.home.trust.areaSuffix : f.suffix,
+    label: d.home.trust.facts[i],
+  }))
   return (
     <section data-theme="dark" className="relative bg-burgundy-950">
       <div className="h-px w-full bg-gold-line" aria-hidden="true" />

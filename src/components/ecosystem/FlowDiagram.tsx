@@ -2,23 +2,20 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Cpu, GraduationCap, Package, Truck } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-interface Stage {
-  icon: LucideIcon
-  name: string
-  companies: string
-}
-
-const STAGES: Stage[] = [
-  { icon: Cpu, name: 'ტექნოლოგია', companies: 'Winelens · VineAI · AgroAI · Oeno' },
-  { icon: Package, name: 'ტარა', companies: 'Vidrala · AggloTap · PortugalCork · Filtrox' },
-  { icon: Truck, name: 'ლოგისტიკა', companies: 'Primelogistics · GS' },
-  { icon: GraduationCap, name: 'განათლება', companies: 'ISG · EWA' },
+const STAGE_META: { icon: LucideIcon; companies: string }[] = [
+  { icon: Cpu, companies: 'Winelens · VineAI · AgroAI · Oeno' },
+  { icon: Package, companies: 'Vidrala · AggloTap · PortugalCork · Filtrox' },
+  { icon: Truck, companies: 'Primelogistics · GS' },
+  { icon: GraduationCap, companies: 'ISG · EWA' },
 ]
 
 export default function FlowDiagram() {
+  const { d } = useLang()
+  const STAGES = STAGE_META.map((s, i) => ({ ...s, name: d.eco.flow.stages[i] }))
   const ref = useRef<HTMLElement>(null)
   // dashed gold line draws with scroll (scrub)
   const { scrollYProgress } = useScroll({
@@ -50,14 +47,13 @@ export default function FlowDiagram() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="text-xs font-semibold tracking-[0.22em] text-gold-400">
-            — ერთიანი ჯაჭვი —
+            {d.eco.flow.eyebrow}
           </p>
           <h2 className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-milk lg:text-[44px]">
-            როგორ ვმუშაობთ <span className="font-display italic text-gold-400">ერთად</span>
+            {d.eco.flow.headingPre}<span className="font-display italic text-gold-400">{d.eco.flow.headingItalic}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[62ch] leading-[1.7] text-milk/75">
-            ოთხი მიმართულება ერთ ჯაჭვად ერთდება — კლიენტი იღებს სრულ სერვისს ვენახიდან
-            ბაზრამდე.
+            {d.eco.flow.sub}
           </p>
         </motion.div>
 

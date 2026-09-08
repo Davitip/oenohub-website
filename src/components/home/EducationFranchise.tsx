@@ -2,29 +2,15 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { ghostLinkDark } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const CARDS = [
-  {
-    image: '/edu-sommelier.png',
-    alt: 'სომელიე ღვინის ბოკალით მარანში',
-    badge: 'ოფიციალური ფრანჩაიზი კავკასიაში',
-    title: 'International Sommelier Guild',
-    body: 'სომელიეთა სერტიფიცირება და პროფესიული ტრენინგები — საერთაშორისო დიპლომით. OenoHub.ge წარმოადგენს გილდიას კავკასიის რეგიონში.',
-    cta: 'გაეცანი პროგრამებს',
-  },
-  {
-    image: '/edu-whisky.png',
-    alt: 'ვისკის დეგუსტაციის ჭიქები მურა მაგიდაზე',
-    badge: 'ოფიციალური ფრანჩაიზი კავკასიაში',
-    title: 'Edinburgh Whisky Academy',
-    body: 'ვისკის განათლება და სერტიფიკატები შოტლანდიური აკადემიისგან — სასმელის ინდუსტრიის პროფესიონალებისა და ენთუზიასტებისთვის.',
-    cta: 'გაეცანი კურსებს',
-  },
-]
 
 export default function EducationFranchise() {
+  const { d } = useLang()
+  const images = ['/edu-sommelier.png', '/edu-whisky.png']
+  const CARDS = d.home.edu.cards.map((c, i) => ({ ...c, image: images[i], badge: d.home.edu.badge }))
   return (
     <section data-theme="dark" className="relative overflow-hidden bg-burgundy-900 py-[72px] lg:py-[120px]">
       <div className="grain-overlay" aria-hidden="true" />
@@ -39,12 +25,12 @@ export default function EducationFranchise() {
         >
           <p className="mb-3 flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
             <span className="inline-block h-px w-8 bg-gold-500" />
-            განათლება
+            {d.home.edu.eyebrow}
             <span className="inline-block h-px w-8 bg-gold-500" />
           </p>
           <h2 className="font-serif text-3xl font-semibold text-milk lg:text-[44px] lg:leading-[1.15]">
-            საერთაშორისო სტანდარტები,{' '}
-            <span className="font-display italic text-gold-400">ადგილობრივად</span>
+            {d.home.edu.headingPre}
+            <span className="font-display italic text-gold-400">{d.home.edu.headingItalic}</span>
           </h2>
         </motion.div>
 

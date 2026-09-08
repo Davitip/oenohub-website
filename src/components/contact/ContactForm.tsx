@@ -5,17 +5,10 @@ import type { ChangeEvent, FocusEvent } from 'react'
 import { Link } from 'react-router'
 import { cn } from '@/lib/utils'
 import { btnPrimary } from '@/lib/styles'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const TOPICS = [
-  'ზოგადი კითხვა',
-  'ტექნოლოგია და AI (Winelens · VineAI · AgroAI · Oeno)',
-  'ტარა და წარმოება (Vidrala · AggloTap · PortugalCork · Filtrox)',
-  'ლოგისტიკა და კონსალტინგი (Primelogistics · GS Consulting)',
-  'განათლება (Sommelier Guild · Whisky Academy)',
-  'პარტნიორობა',
-]
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -31,13 +24,13 @@ type Errors = Partial<Record<keyof FormValues, string>>
 
 const INITIAL: FormValues = { name: '', email: '', phone: '', topic: '', message: '' }
 
-function validate(values: FormValues): Errors {
+function validate(values: FormValues, msg: { errName: string; errEmail: string; errEmailFormat: string; errTopic: string; errMessage: string }): Errors {
   const errors: Errors = {}
-  if (!values.name.trim()) errors.name = 'შეიყვანე სახელი და გვარი'
-  if (!values.email.trim()) errors.email = 'შეიყვანე ელ.ფოსტა'
-  else if (!EMAIL_RE.test(values.email.trim())) errors.email = 'ელ.ფოსტის ფორმატი არასწორია'
-  if (!values.topic) errors.topic = 'აირჩიე თემა'
-  if (!values.message.trim()) errors.message = 'დაწერე შეტყობინება'
+  if (!values.name.trim()) errors.name = msg.errName
+  if (!values.email.trim()) errors.email = msg.errEmail
+  else if (!EMAIL_RE.test(values.email.trim())) errors.email = msg.errEmailFormat
+  if (!values.topic) errors.topic = msg.errTopic
+  if (!values.message.trim()) errors.message = msg.errMessage
   return errors
 }
 
@@ -74,12 +67,6 @@ function Field({
   )
 }
 
-const COORDS = [
-  { icon: MapPin, label: 'მისამართი', value: 'თბილისი, საქართველო' },
-  { icon: Mail, label: 'ელ.ფოსტა', value: 'info@oenohub.ge', href: 'mailto:info@oenohub.ge' },
-  { icon: Phone, label: 'ტელეფონი', value: '+995 555 00 00 00', href: 'tel:+995555000000' },
-  { icon: Clock, label: 'სამუშაო საათები', value: 'ორშ–პარ, 10:00–19:00' },
-]
 
 const SOCIALS = [
   { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' },
@@ -88,6 +75,15 @@ const SOCIALS = [
 ]
 
 export default function ContactForm() {
+  const { d } = useLang()
+  const f = d.contact.form
+  const TOPICS = f.topics
+  const COORDS = [
+    { icon: MapPin, label: d.contact.direct.address, value: d.contact.direct.addressValue },
+    { icon: Mail, label: d.contact.direct.email, value: 'info@oenohub.ge', href: 'mailto:info@oenohub.ge' },
+    { icon: Phone, label: d.contact.direct.phone, value: '+995 555 00 00 00', href: 'tel:+995555000000' },
+    { icon: Clock, label: d.contact.direct.hours, value: d.contact.direct.hoursValue },
+  ]
   const [values, setValues] = useState<FormValues>(INITIAL)
   const [errors, setErrors] = useState<Errors>({})
   const [submitted, setSubmitted] = useState(false)
@@ -95,16 +91,16 @@ export default function ContactForm() {
   const set = (key: keyof FormValues) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const next = { ...values, [key]: e.target.value }
     setValues(next)
-    if (errors[key]) setErrors(validate(next))
+    if (errors[key]) setErrors(validate(next, f))
   }
 
   const onBlur = (key: keyof FormValues) => (_e: FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    if (values[key].trim() !== '' || errors[key]) setErrors(validate(values))
+    if (values[key].trim() !== '' || errors[key]) setErrors(validate(values, f))
   }
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const errs = validate(values)
+    const errs = validate(values, f)
     setErrors(errs)
     if (Object.keys(errs).length === 0) setSubmitted(true)
   }
@@ -157,33 +153,33 @@ export default function ContactForm() {
                   />
                 </motion.svg>
                 <h3 className="mt-6 font-serif text-2xl font-semibold text-ink-900">
-                  შეტყობინება გაიგზავნა!
+                  {f.successTitle}
                 </h3>
-                <p className="mt-2 text-ink-600">მალე დაგიკავშირდებით.</p>
+                <p className="mt-2 text-ink-600">{f.successText}</p>
                 <Link to="/" className={cn(btnPrimary, 'mt-8')}>
-                  მთავარზე დაბრუნება
+                  {f.backHome}
                 </Link>
               </motion.div>
             ) : (
               <>
                 <h3 className="font-serif text-2xl font-semibold text-ink-900">
-                  გამოგვიგზავნე შეტყობინება
+                  {f.title}
                 </h3>
                 <form onSubmit={onSubmit} noValidate className="mt-8 flex flex-col gap-6">
-                  <Field label="სახელი და გვარი" error={errors.name}>
+                  <Field label={f.name} error={errors.name}>
                     <input
                       type="text"
                       required
                       value={values.name}
                       onChange={set('name')}
                       onBlur={onBlur('name')}
-                      placeholder="მაგ. გიორგი მელაძე"
+                      placeholder={f.namePh}
                       className={cn(inputBase, errors.name && inputError)}
                     />
                   </Field>
 
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <Field label="ელ.ფოსტა" error={errors.email}>
+                    <Field label={f.email} error={errors.email}>
                       <input
                         type="email"
                         required
@@ -194,18 +190,18 @@ export default function ContactForm() {
                         className={cn(inputBase, errors.email && inputError)}
                       />
                     </Field>
-                    <Field label="ტელეფონი (არასავალდებულო)">
+                    <Field label={f.phone}>
                       <input
                         type="tel"
                         value={values.phone}
                         onChange={set('phone')}
-                        placeholder="+995 5__ __ __ __"
+                        placeholder={f.phonePh}
                         className={inputBase}
                       />
                     </Field>
                   </div>
 
-                  <Field label="თემა" error={errors.topic}>
+                  <Field label={f.topic} error={errors.topic}>
                     <div className="relative">
                       <select
                         required
@@ -220,7 +216,7 @@ export default function ContactForm() {
                         )}
                       >
                         <option value="" disabled>
-                          აირჩიე თემა…
+                          {f.topicPh}
                         </option>
                         {TOPICS.map((t) => (
                           <option key={t} value={t} className="text-ink-900">
@@ -235,20 +231,20 @@ export default function ContactForm() {
                     </div>
                   </Field>
 
-                  <Field label="შეტყობინება" error={errors.message}>
+                  <Field label={f.message} error={errors.message}>
                     <textarea
                       required
                       rows={5}
                       value={values.message}
                       onChange={set('message')}
                       onBlur={onBlur('message')}
-                      placeholder="მოგვიყევი მოკლედ, რა გაინტერესებს…"
+                      placeholder={f.messagePh}
                       className={cn(inputBase, 'resize-y', errors.message && inputError)}
                     />
                   </Field>
 
                   <button type="submit" className={cn(btnPrimary, 'w-full')}>
-                    გაგზავნა <span aria-hidden="true">→</span>
+                    {f.submit} <span aria-hidden="true">→</span>
                   </button>
                 </form>
               </>
@@ -267,7 +263,7 @@ export default function ContactForm() {
           <div data-theme="dark" className="relative overflow-hidden rounded-[20px] bg-burgundy-900 p-6 text-milk lg:p-10">
             <div className="grain-overlay" aria-hidden="true" />
             <div className="relative">
-              <h3 className="font-serif text-2xl font-semibold">პირდაპირი კავშირი</h3>
+              <h3 className="font-serif text-2xl font-semibold">{d.contact.direct.title}</h3>
               <ul className="mt-8 flex flex-col gap-6">
                 {COORDS.map((c, i) => (
                   <motion.li
@@ -304,7 +300,7 @@ export default function ContactForm() {
 
               <div className="mt-6">
                 <p className="text-xs font-semibold tracking-[0.06em] text-milk/60">
-                  სოციალური ქსელები
+                  {d.contact.direct.socials}
                 </p>
                 <div className="mt-4 flex gap-3">
                   {SOCIALS.map((s) => (

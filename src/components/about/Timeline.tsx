@@ -1,32 +1,12 @@
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
-const STAGES = [
-  {
-    title: 'ტექნოლოგიების ეტაპი',
-    text: 'დაიწყო Winelens.ge-ით და Oeno.ge-ით: ღვინის ინდუსტრიის ციფრული ფუნდამენტი. შემდეგ VineAI.ge და AgroAI.ge — AI მევენახეობასა და სოფლის მეურნეობაში.',
-  },
-  {
-    title: 'ტარის ეტაპი',
-    text: 'Vidrala.ge, AggloTap.ge და PortugalCork.ge: ევროპული ტარის სამი სვეტი — მინა, ტექნიკური და ბუნებრივი ქორქი.',
-  },
-  {
-    title: 'ფილტრაცია და ხარისხი',
-    text: 'Filtrox.ge შეუერთდა ეკოსისტემას, ღვინის სიწმინდის სტანდარტით.',
-  },
-  {
-    title: 'ლოგისტიკა და ექსპერტიზა',
-    text: 'Primelogistics.ge-ს 200 მ² საწყობი და GS Consulting-ის სტრატეგიული გუნდი დაკავშირდა ჯაჭვს.',
-  },
-  {
-    title: 'განათლების ეტაპი',
-    text: 'International Sommelier Guild-ისა და Edinburgh Whisky Academy-ს ფრანჩაიზები კავკასიისთვის — ეკოსისტემის სრული წრის დახურვა.',
-  },
-]
-
 export default function Timeline() {
+  const { d } = useLang()
+  const STAGES = d.about.timeline.stages
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.8', 'end 0.2'] })
   const lineScale = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1]), {
@@ -46,7 +26,7 @@ export default function Timeline() {
             transition={{ duration: 0.7, ease: EASE }}
             className="text-xs font-semibold tracking-[0.22em] text-gold-500"
           >
-            — გზა —
+            {d.about.timeline.eyebrow}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 32 }}
@@ -55,7 +35,7 @@ export default function Timeline() {
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
             className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
-            ეკოსისტემის ფორმირების ეტაპები
+            {d.about.timeline.heading}
           </motion.h2>
           <motion.div
             initial={{ scaleX: 0 }}

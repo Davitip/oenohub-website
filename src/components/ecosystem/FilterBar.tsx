@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
+import { useLang } from '@/i18n/LanguageContext'
 import { FILTER_PILLS, type FilterKey } from './eco-data'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
@@ -17,6 +18,7 @@ interface FilterBarProps {
  * Framer Motion layoutId background.
  */
 export default function FilterBar({ filter, onSelect }: FilterBarProps) {
+  const { d } = useLang()
   const [pastHero, setPastHero] = useState(false)
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function FilterBar({ filter, onSelect }: FilterBarProps) {
       >
         <div className="mx-auto flex w-full max-w-[1280px] items-center gap-3 overflow-x-auto px-6 lg:gap-4 lg:px-12">
           <span className="shrink-0 text-xs font-semibold tracking-[0.06em] text-ink-400">
-            კატეგორია:
+            {d.eco.filter.label}
           </span>
           <div className="flex items-center gap-2">
             {FILTER_PILLS.map((pill) => {
@@ -60,7 +62,7 @@ export default function FilterBar({ filter, onSelect }: FilterBarProps) {
                       className="absolute inset-0 rounded-full bg-burgundy-700"
                     />
                   )}
-                  <span className="relative">{pill.label}</span>
+                  <span className="relative">{pill.key === 'all' ? d.eco.filter.all : d.eco.categories[pill.key].badge}</span>
                 </button>
               )
             })}
@@ -68,7 +70,7 @@ export default function FilterBar({ filter, onSelect }: FilterBarProps) {
               to="/education"
               className="group inline-flex shrink-0 items-center gap-1 rounded-full bg-cream-100 px-4 py-1.5 text-[13px] font-medium text-ink-600 transition-all duration-300 hover:ring-1 hover:ring-gold-500/60"
             >
-              განათლება
+              {d.eco.filter.education}
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
