@@ -1,23 +1,5 @@
-import CompaniesCarousel from '@/components/home/CompaniesCarousel'
-import CtaSection from '@/components/home/CtaSection'
-import EcosystemChain from '@/components/home/EcosystemChain'
-import EducationFranchise from '@/components/home/EducationFranchise'
-import Hero from '@/components/home/Hero'
-import Quote from '@/components/home/Quote'
-import Stats from '@/components/home/Stats'
-import TrustStrip from '@/components/home/TrustStrip'
+import PlatformHome from '@/components/home/PlatformHome'
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <TrustStrip />
-      <EcosystemChain />
-      <CompaniesCarousel />
-      <EducationFranchise />
-      <Stats />
-      <Quote />
-      <CtaSection />
-    </>
-  )
+  return <PlatformHome />
 }
