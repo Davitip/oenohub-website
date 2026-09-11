@@ -5,7 +5,6 @@ import {
   Check,
   CircleDot,
   Factory,
-  Layers3,
   Network,
   PackageCheck,
   ShieldCheck,
