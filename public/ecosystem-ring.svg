@@ -14,9 +14,17 @@
   <g stroke="#EBD48A" stroke-width="2.5" fill="none"><path d="M240.89999999999998 586.2h20v16h-20zM260.9 592.2h10l6 6v4h-16z"/><circle cx="248.89999999999998" cy="606.2" r="4"/><circle cx="268.9" cy="606.2" r="4"/></g><circle cx="171.7" cy="325.8" r="46" fill="#3D0A18" stroke="#C9A227" stroke-width="2"/>
   <circle cx="171.7" cy="325.8" r="38" fill="none" stroke="#C9A227" stroke-width="0.8" opacity="0.5"/>
   <g stroke="#EBD48A" stroke-width="2.5" fill="none"><path d="M155.7 309.8l16 8 16-8-16-8z"/><path d="M163.7 314.8v10c0 4 16 4 16 0v-10"/><path d="M187.7 309.8v14"/></g>
-  <g fill="none" stroke="#EBD48A" stroke-width="2">
-    <ellipse cx="400" cy="392" rx="16" ry="20"/>
-    <path d="M400 372 C400 362 404 356 412 352"/>
-    <path d="M384 412 L416 412 L400 428 Z" fill="#EBD48A" stroke="none" opacity="0.9"/>
+  <g transform="translate(400,400) scale(1.35) translate(-300,-300)" stroke="#EBD48A" stroke-width="2">
+    <path d="M300 240 C300 232 306 226 314 222" fill="none"/>
+    <path d="M300 240 C286 230 268 232 260 244 C272 252 290 250 300 240 Z" fill="#3D0A18"/>
+    <circle cx="300" cy="258" r="13" fill="#3D0A18"/>
+    <circle cx="283" cy="280" r="13" fill="#3D0A18"/>
+    <circle cx="317" cy="280" r="13" fill="#3D0A18"/>
+    <circle cx="267" cy="304" r="13" fill="#3D0A18"/>
+    <circle cx="300" cy="304" r="13" fill="#3D0A18"/>
+    <circle cx="333" cy="304" r="13" fill="#3D0A18"/>
+    <circle cx="283" cy="328" r="13" fill="#3D0A18"/>
+    <circle cx="317" cy="328" r="13" fill="#3D0A18"/>
+    <circle cx="300" cy="350" r="13" fill="#3D0A18"/>
   </g>
 </svg>
