@@ -1,6 +1,7 @@
 import { ArrowRight, Factory, Network, PackageCheck, Sprout, Truck } from 'lucide-react'
 import { Link } from 'react-router'
 import { useLang } from '@/i18n/LanguageContext'
+import { brands } from '@/lib/brandLogos'
 
 const pillarData = [
   {
@@ -146,6 +147,29 @@ export default function Ecosystem() {
             </div>
           </div>
         </div>
+
+        <div className="mt-16">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8d6042]">{c.network.brandsLabel}</span>
+          <div className="mt-6 grid grid-cols-2 gap-px border border-black/15 bg-black/15 sm:grid-cols-3 lg:grid-cols-6">
+            {brands.map((b) => {
+              const cell = (
+                <>
+                  <img src={b.logo} alt={b.name} className="h-9 w-auto max-w-[80%] object-contain transition group-hover:scale-105" />
+                  <span className="mt-3 block text-center text-[8px] uppercase tracking-[0.14em] text-black/40">{b.name}</span>
+                </>
+              )
+              return b.href ? (
+                <a key={b.name} href={b.href} target="_blank" rel="noreferrer" className="group flex min-h-28 flex-col items-center justify-center bg-[#f3efe7] p-5 transition hover:bg-white">
+                  {cell}
+                </a>
+              ) : (
+                <div key={b.name} className="group flex min-h-28 flex-col items-center justify-center bg-[#f3efe7] p-5">
+                  {cell}
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </section>
 
       <section className="bg-[#3d1722] text-white">
@@ -184,7 +208,7 @@ const en = {
       { title: 'Coordinated delivery', text: 'Quotations, documents, logistics and follow-up move through one accountable interface.' },
     ],
   },
-  network: { label: 'SPECIALIST NETWORK', title: 'The brands remain specialists. OENO HUB becomes the operating layer.', lead: 'The purpose is not to blur company identities or imply ownership. Each company retains its role and expertise; OENO HUB coordinates the customer journey across them.', core: 'coordinated interface' },
+  network: { label: 'SPECIALIST NETWORK', title: 'The brands remain specialists. OENO HUB becomes the operating layer.', lead: 'The purpose is not to blur company identities or imply ownership. Each company retains its role and expertise; OENO HUB coordinates the customer journey across them.', core: 'coordinated interface', brandsLabel: 'PARTNER BRANDS' },
   cta: { title: 'Bring us the objective.', lead: 'Tell us what you are building, upgrading or trying to solve. We will assemble the relevant workstreams around it.', button: 'Start a project brief' },
 }
 
@@ -209,6 +233,6 @@ const ka = {
       { title: 'ერთიანი მიწოდება', text: 'შეთავაზებები, დოკუმენტები, ლოგისტიკა და follow-up ერთი პასუხისმგებელი ინტერფეისით იმართება.' },
     ],
   },
-  network: { label: 'სპეციალისტების ქსელი', title: 'ბრენდები რჩებიან სპეციალისტებად. OENO HUB ხდება ოპერაციული ფენა.', lead: 'მიზანი არ არის კომპანიების იდენტობის შერწყმა ან საკუთრების შთაბეჭდილების შექმნა. თითოეული კომპანია ინარჩუნებს თავის როლსა და ექსპერტიზას; OENO HUB კი კლიენტის გზას მათ შორის კოორდინირებს.', core: 'კოორდინირებული ინტერფეისი' },
+  network: { label: 'სპეციალისტების ქსელი', title: 'ბრენდები რჩებიან სპეციალისტებად. OENO HUB ხდება ოპერაციული ფენა.', lead: 'მიზანი არ არის კომპანიების იდენტობის შერწყმა ან საკუთრების შთაბეჭდილების შექმნა. თითოეული კომპანია ინარჩუნებს თავის როლსა და ექსპერტიზას; OENO HUB კი კლიენტის გზას მათ შორის კოორდინირებს.', core: 'კოორდინირებული ინტერფეისი', brandsLabel: 'პარტნიორი ბრენდები' },
   cta: { title: 'მოგვიტანე მიზანი.', lead: 'გვითხარი რას აშენებ, რას აახლებ ან რა პრობლემის გადაწყვეტას ცდილობ. შესაბამის სამუშაო მიმართულებებს ერთ პროექტად შევკრავთ.', button: 'პროექტის brief-ის დაწყება' },
 }

@@ -21,18 +21,21 @@ type Partner = {
   name: string
   descriptor: string
   href?: string
+  logo: string
 }
 
 const partners: Partner[] = [
-  { name: 'VineAI', descriptor: 'Vineyard intelligence', href: 'https://vineai.ge' },
-  { name: 'AgroAI', descriptor: 'Agriculture intelligence', href: 'https://agroai.ge' },
-  { name: 'Oeno', descriptor: 'Enology & beverage technology', href: 'https://oeno.ge' },
-  { name: 'FILTROX', descriptor: 'Process filtration', href: 'https://filtrox.ge' },
-  { name: 'Vidrala', descriptor: 'Glass packaging', href: 'https://vidrala.ge' },
-  { name: 'Portugalia Cork', descriptor: 'Natural closures', href: 'https://portugaliacork.ge' },
-  { name: 'Agglotap', descriptor: 'Closure systems', href: 'https://agglotap.ge' },
-  { name: 'Prime Logistics', descriptor: 'Logistics & fulfillment', href: 'https://primelogistics.ge' },
-  { name: 'GS Consulting', descriptor: 'Strategy & project coordination' },
+  { name: 'Wine Hub', descriptor: 'Wine & spirits distribution', href: 'https://www.facebook.com/winehub.ge', logo: '/logo-winehub.svg' },
+  { name: 'Winelens', descriptor: 'Wine media & marketplace', href: 'https://winelens.ge', logo: '/logo-winelens.svg' },
+  { name: 'VineAI', descriptor: 'Vineyard intelligence', href: 'https://vineai.ge', logo: '/logo-vineai.svg' },
+  { name: 'AgroAI', descriptor: 'Agriculture intelligence', href: 'https://agroai.ge', logo: '/logo-agroai.svg' },
+  { name: 'Oeno', descriptor: 'Enology & beverage technology', href: 'https://oeno.ge', logo: '/logo-oeno.svg' },
+  { name: 'FILTROX', descriptor: 'Process filtration', href: 'https://filtrox.ge', logo: '/logo-filtrox.svg' },
+  { name: 'Vidrala', descriptor: 'Glass packaging', href: 'https://vidrala.ge', logo: '/logo-vidrala.svg' },
+  { name: 'Portugalia Cork', descriptor: 'Natural closures', href: 'https://portugaliacork.ge', logo: '/logo-portugaliacork.svg' },
+  { name: 'Agglotap', descriptor: 'Closure systems', href: 'https://agglotap.ge', logo: '/logo-agglotap.svg' },
+  { name: 'Prime Logistics', descriptor: 'Logistics & fulfillment', href: 'https://primelogistics.ge', logo: '/logo-primelogistics.svg' },
+  { name: 'GS Consulting', descriptor: 'Strategy & project coordination', logo: '/logo-gs.svg' },
 ]
 
 export default function PlatformHome() {
@@ -249,8 +252,8 @@ export default function PlatformHome() {
               const content = (
                 <>
                   <div>
-                    <strong className="font-serif text-2xl font-medium">{partner.name}</strong>
-                    <span className="mt-2 block text-[10px] uppercase tracking-[0.14em] text-black/40">{partner.descriptor}</span>
+                    <img src={partner.logo} alt={partner.name} className="h-9 w-auto object-contain" />
+                    <span className="mt-3 block text-[10px] uppercase tracking-[0.14em] text-black/40">{partner.descriptor}</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#8d6042] transition group-hover:translate-x-1" />
                 </>
