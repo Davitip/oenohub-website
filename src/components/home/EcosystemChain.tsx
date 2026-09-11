@@ -185,11 +185,22 @@ export default function EcosystemChain() {
                   strokeLinecap="round"
                 />
               ))}
-              {/* center drop */}
-              <g fill="none" stroke="#EBD48A" strokeWidth={2}>
-                <ellipse cx={300} cy={292} rx={16} ry={20} />
-                <path d="M300 272 C300 262 304 256 312 252" />
-                <path d="M284 312 L316 312 L300 328 Z" fill="#EBD48A" stroke="none" opacity={0.9} />
+              {/* center grape cluster */}
+              <g stroke="#EBD48A" strokeWidth={2}>
+                {/* stem */}
+                <path d="M300 240 C300 232 306 226 314 222" fill="none" />
+                {/* leaf */}
+                <path d="M300 240 C286 230 268 232 260 244 C272 252 290 250 300 240 Z" fill="#3D0A18" />
+                {/* berries */}
+                <circle cx={300} cy={258} r={13} fill="#3D0A18" />
+                <circle cx={283} cy={280} r={13} fill="#3D0A18" />
+                <circle cx={317} cy={280} r={13} fill="#3D0A18" />
+                <circle cx={267} cy={304} r={13} fill="#3D0A18" />
+                <circle cx={300} cy={304} r={13} fill="#3D0A18" />
+                <circle cx={333} cy={304} r={13} fill="#3D0A18" />
+                <circle cx={283} cy={328} r={13} fill="#3D0A18" />
+                <circle cx={317} cy={328} r={13} fill="#3D0A18" />
+                <circle cx={300} cy={350} r={13} fill="#3D0A18" />
               </g>
               {NODES.map((n, i) => (
                 <g key={i}>
