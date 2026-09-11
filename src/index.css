@@ -149,3 +149,14 @@ html[lang='ka'] h3.font-serif {
   letter-spacing: -0.01em;
   line-height: 1.18;
 }
+
+/* Georgian display headings: cap the oversized Latin display scale so long
+   Georgian words never overflow their columns */
+html[lang='ka'] h1.font-serif,
+html[lang='ka'] h2.font-serif {
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  line-height: 1.22;
+}
+html[lang='ka'] h3.font-serif {
+  letter-spacing: -0.01em;
+}
