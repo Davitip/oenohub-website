@@ -150,7 +150,7 @@ export default function Ecosystem() {
 
         <div className="mt-16">
           <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8d6042]">{c.network.brandsLabel}</span>
-          <div className="mt-6 grid grid-cols-2 gap-px border border-black/15 bg-black/15 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
             {brands.map((b) => {
               const cell = (
                 <>
@@ -159,11 +159,11 @@ export default function Ecosystem() {
                 </>
               )
               return b.href ? (
-                <a key={b.name} href={b.href} target="_blank" rel="noreferrer" className="group flex min-h-28 flex-col items-center justify-center bg-[#f3efe7] p-5 transition hover:bg-white">
+                <a key={b.name} href={b.href} target="_blank" rel="noreferrer" className="group -ml-px -mt-px flex min-h-28 flex-col items-center justify-center border border-black/15 bg-[#f3efe7] p-5 transition hover:bg-white">
                   {cell}
                 </a>
               ) : (
-                <div key={b.name} className="group flex min-h-28 flex-col items-center justify-center bg-[#f3efe7] p-5">
+                <div key={b.name} className="group -ml-px -mt-px flex min-h-28 flex-col items-center justify-center border border-black/15 bg-[#f3efe7] p-5">
                   {cell}
                 </div>
               )
