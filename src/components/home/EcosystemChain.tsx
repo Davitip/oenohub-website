@@ -150,7 +150,7 @@ export default function EcosystemChain() {
       <div className="grain-overlay" aria-hidden="true" />
 
       {/* ===== Desktop pinned version ===== */}
-      <div ref={pinRef} className="relative hidden h-[100dvh] items-center lg:flex">
+      <div ref={pinRef} className="relative hidden min-h-[100dvh] items-center pb-16 pt-28 lg:flex">
         <div className="mx-auto grid w-full max-w-[1280px] grid-cols-[auto_1fr_1fr] items-center gap-16 px-12">
           {/* progress dots */}
           <div className="flex flex-col items-center gap-5" aria-hidden="true">
