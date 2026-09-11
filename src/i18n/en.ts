@@ -153,6 +153,12 @@ export const en: Dictionary = {
       'international franchises',
       'unified platform',
     ],
+    film: {
+      eyebrow: '— The ecosystem in motion —',
+      heading: 'From Vineyard to Shelf',
+      sub: '12 seconds of the full journey: from harvest through technology, bottling and logistics — to the final product on the shelf.',
+      videoAria: 'Brand film: from vineyard to the final product',
+    },
     quote: {
       text: '“Wine begins in the vineyard and ends in an experience — we unite every link along the way.”',
       by: '— The OenoHub.ge Team',

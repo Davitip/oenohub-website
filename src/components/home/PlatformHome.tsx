@@ -14,6 +14,7 @@ import {
   Truck,
 } from 'lucide-react'
 import { useLang } from '@/i18n/LanguageContext'
+import BrandFilm from '@/components/home/BrandFilm'
 
 type GoalKey = 'newWinery' | 'upgrade' | 'vineyard' | 'filtration' | 'packaging' | 'logistics' | 'complete'
 
@@ -127,6 +128,8 @@ export default function PlatformHome() {
           </div>
         </div>
       </section>
+
+      <BrandFilm />
 
       <section className="mx-auto max-w-[1500px] px-6 py-24 md:px-10 lg:px-16 lg:py-32 xl:px-20">
         <div className="grid gap-10 lg:grid-cols-[.55fr_1.45fr]">
