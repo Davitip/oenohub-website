@@ -81,7 +81,8 @@ export default function ContactForm() {
   const COORDS = [
     { icon: MapPin, label: d.contact.direct.address, value: d.contact.direct.addressValue },
     { icon: Mail, label: d.contact.direct.email, value: 'info@oenohub.ge', href: 'mailto:info@oenohub.ge' },
-    { icon: Phone, label: d.contact.direct.phone, value: '+995 555 00 00 00', href: 'tel:+995555000000' },
+    { icon: Phone, label: d.contact.direct.phone, value: '+995 510 10 20 90', href: 'tel:+995510102090' },
+    { icon: Phone, label: d.contact.direct.phone, value: '+995 577 14 14 87', href: 'tel:+995577141487' },
     { icon: Clock, label: d.contact.direct.hours, value: d.contact.direct.hoursValue },
   ]
   const [values, setValues] = useState<FormValues>(INITIAL)

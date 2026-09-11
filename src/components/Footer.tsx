@@ -111,8 +111,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="tel:+995555000000" className="transition-colors hover:text-gold-400">
-                +995 555 00 00 00
+              <a href="tel:+995510102090" className="block transition-colors hover:text-gold-400">
+                +995 510 10 20 90
+              </a>
+              <a href="tel:+995577141487" className="block transition-colors hover:text-gold-400">
+                +995 577 14 14 87
               </a>
             </li>
           </ul>
