@@ -4,6 +4,7 @@ import CtaSection from '@/components/home/CtaSection'
 import EcosystemChain from '@/components/home/EcosystemChain'
 import EducationFranchise from '@/components/home/EducationFranchise'
 import Hero from '@/components/home/Hero'
+import PartnerBrands from '@/components/home/PartnerBrands'
 import Quote from '@/components/home/Quote'
 import Stats from '@/components/home/Stats'
 import TrustStrip from '@/components/home/TrustStrip'
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <BrandFilm />
+      <PartnerBrands />
       <TrustStrip />
       <EcosystemChain />
       <CompaniesCarousel />
