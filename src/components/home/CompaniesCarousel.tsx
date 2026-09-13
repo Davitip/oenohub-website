@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
@@ -13,6 +13,7 @@ export default function CompaniesCarousel() {
   const trackRef = useRef<HTMLDivElement>(null)
   const viewportRef = useRef<HTMLDivElement>(null)
   const [dragLimit, setDragLimit] = useState(0)
+  const x = useMotionValue(0)
 
   useEffect(() => {
     const measure = () => {
@@ -25,6 +26,25 @@ export default function CompaniesCarousel() {
     window.addEventListener('resize', measure)
     return () => window.removeEventListener('resize', measure)
   }, [])
+
+  // let the mouse wheel move the carousel horizontally;
+  // at either end the wheel falls through to normal page scroll
+  useEffect(() => {
+    const viewport = viewportRef.current
+    if (!viewport) return
+    const onWheel = (e: WheelEvent) => {
+      if (dragLimit <= 0) return
+      const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX
+      const cur = x.get()
+      const next = Math.min(0, Math.max(-dragLimit, cur - delta))
+      if (next !== cur) {
+        e.preventDefault()
+        x.set(next)
+      }
+    }
+    viewport.addEventListener('wheel', onWheel, { passive: false })
+    return () => viewport.removeEventListener('wheel', onWheel)
+  }, [dragLimit, x])
 
   return (
     <section className="bg-cream-50 py-[72px] lg:py-[120px]">
@@ -68,6 +88,7 @@ export default function CompaniesCarousel() {
         <motion.div
           ref={trackRef}
           drag="x"
+          style={{ x, touchAction: 'pan-y' }}
           dragConstraints={{ left: -dragLimit, right: 0 }}
           dragTransition={{ power: 0.28, timeConstant: 220, modifyTarget: (t) => Math.round(t / 364) * 364 }}
           className="flex cursor-grab gap-6 px-6 active:cursor-grabbing lg:px-[max(3rem,calc((100vw-1280px)/2+3rem))]"
