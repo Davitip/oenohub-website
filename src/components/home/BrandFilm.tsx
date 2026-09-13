@@ -1,7 +1,33 @@
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { useLang } from '@/i18n/LanguageContext'
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
+
+/** Mounts the video only when the section approaches the viewport,
+ *  so the 1.2 MB film never blocks the initial page load. */
+function LazyVideo({ ariaLabel }: { ariaLabel: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { margin: '400px 0px', once: true })
+
+  return (
+    <div ref={ref} className="aspect-video w-full bg-burgundy-950">
+      {inView && (
+        <video
+          className="block h-auto w-full"
+          src="/brand-film.mp4"
+          poster="/brand-film-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-label={ariaLabel}
+        />
+      )}
+    </div>
+  )
+}
 
 export default function BrandFilm() {
   const { d } = useLang()
@@ -50,16 +76,7 @@ export default function BrandFilm() {
           viewport={{ once: true, margin: '-15% 0px' }}
           transition={{ duration: 1, ease: EASE }}
         >
-          <video
-            className="block h-auto w-full"
-            src="/brand-film.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-label={d.home.film.videoAria}
-          />
+          <LazyVideo ariaLabel={d.home.film.videoAria} />
           <div
             className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"
             aria-hidden="true"
