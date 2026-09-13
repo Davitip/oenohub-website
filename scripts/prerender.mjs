@@ -7,8 +7,10 @@
  *   EN: dist/en/index.html, dist/en/ecosystem/index.html, ...
  */
 import { createServer } from 'node:http'
-import { createReadStream } from 'node:fs'
-import { mkdir, stat, writeFile } from 'node:fs/promises'
+import { createReadStream, existsSync } from 'node:fs'
+import { mkdir, rename, stat, writeFile } from 'node:fs/promises'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
@@ -16,8 +18,8 @@ import { chromium } from 'playwright'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = path.join(ROOT, 'dist')
 const ORIGIN = 'https://oenohub.ge'
-const PORT = 4173
-const PREVIEW_URL = `http://localhost:${PORT}`
+// port 0 = ephemeral port chosen by the OS (avoids EADDRINUSE in CI retries)
+let PREVIEW_URL = 'http://127.0.0.1:0'
 
 const ROUTES = [
   {
@@ -215,14 +217,70 @@ function serveDist() {
   })
 }
 
+const execFileAsync = promisify(execFile)
+
+/**
+ * Resolve a working chromium and launch it. Order:
+ *  1. explicit executable candidates (env CHROMIUM_PATH, system installs)
+ *  2. playwright's own cached browsers (default launch)
+ *  3. CI fallback: `npx playwright install chromium` once, then retry
+ * Returns null when nothing works — callers must treat that as "skip prerender".
+ */
+async function launchBrowser() {
+  const attempts = []
+  if (process.env.PRERENDER_SKIP_SYSTEM_CHROME !== '1') {
+    const candidates = [
+      process.env.CHROMIUM_PATH,
+      '/usr/bin/chromium',
+      '/usr/bin/chromium-browser',
+      '/usr/bin/google-chrome',
+    ].filter(Boolean)
+    for (const executablePath of candidates) {
+      if (existsSync(executablePath)) attempts.push({ executablePath })
+    }
+  }
+  // playwright-managed browsers from the download cache
+  attempts.push({})
+
+  for (const opts of attempts) {
+    try {
+      return await chromium.launch(opts)
+    } catch (err) {
+      console.warn(`  [prerender] chromium launch failed (${opts.executablePath || 'playwright cache'}): ${err.message.split('\n')[0]}`)
+    }
+  }
+
+  // CI fallback: download a browser into the playwright cache (once per build).
+  console.warn('  [prerender] no local chromium found; running `npx playwright install chromium` ...')
+  try {
+    const { stdout, stderr } = await execFileAsync('npx', ['playwright', 'install', 'chromium'], {
+      cwd: ROOT,
+      maxBuffer: 16 * 1024 * 1024,
+    })
+    if (stdout) console.warn(stdout.trim())
+    if (stderr) console.warn(stderr.trim())
+    return await chromium.launch({})
+  } catch (err) {
+    console.warn(`  [prerender] playwright install/launch fallback failed: ${err.message.split('\n')[0]}`)
+    return null
+  }
+}
+
 async function main() {
   const server = serveDist()
-  await new Promise((resolve) => server.listen(PORT, '127.0.0.1', resolve))
+  await new Promise((resolve, reject) => {
+    server.once('error', reject)
+    server.listen(0, '127.0.0.1', resolve)
+  })
+  PREVIEW_URL = `http://127.0.0.1:${server.address().port}`
   try {
     await waitForServer(PREVIEW_URL)
 
-    const executablePath = process.env.CHROMIUM_PATH || '/usr/bin/chromium'
-    const browser = await chromium.launch({ executablePath })
+    const browser = await launchBrowser()
+    if (!browser) {
+      console.warn('[prerender] WARNING: no chromium available — skipping prerender. dist/ keeps the plain SPA build; deploy continues.')
+      return
+    }
     const page = await browser.newPage()
     // Snapshots written earlier in this run may be served as the base HTML of
     // later routes (SPA fallback); clear #root before app scripts run so that
@@ -249,7 +307,10 @@ async function main() {
         const html = await page.content()
         const file = outFile(lang, route.path)
         await mkdir(path.dirname(file), { recursive: true })
-        await writeFile(file, html, 'utf8')
+        // atomic write: never leave a truncated index.html behind
+        const tmp = `${file}.tmp-${process.pid}`
+        await writeFile(tmp, html, 'utf8')
+        await rename(tmp, file)
         console.log(`rendered ${lang} ${target} -> ${path.relative(ROOT, file)} (${html.length} bytes)`)
       }
     }
@@ -261,6 +322,8 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err)
-  process.exit(1)
+  // Never hard-fail the deploy: dist/ still contains a valid SPA build and
+  // per-route snapshot writes are atomic, so a prerender error is non-fatal.
+  console.warn(`[prerender] WARNING: prerendering failed, continuing without snapshots: ${err.message}`)
+  process.exit(0)
 })
