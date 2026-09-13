@@ -66,7 +66,7 @@ export default function Navbar() {
       <div className={`bg-frosted transition-all duration-300 ${scrolled ? 'h-14 border-b border-black/10' : 'h-20 border-b border-black/[0.06]'}`}>
         <div className="mx-auto flex h-full max-w-[1500px] items-center justify-between px-6 lg:px-12 xl:px-16">
           <Link to="/" aria-label="OenoHub home" className="shrink-0 transition-transform duration-200 active:scale-95">
-            <img src="/logo.svg" alt="OenoHub.ge" className="h-8 w-auto" />
+            <img src="/logo-dark.svg" alt="OenoHub.ge" className="h-8 w-auto" />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label={isKa ? 'მთავარი ნავიგაცია' : 'Main navigation'}>

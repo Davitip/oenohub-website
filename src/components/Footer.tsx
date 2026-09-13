@@ -40,7 +40,7 @@ export default function Footer() {
       >
         {/* brand */}
         <motion.div variants={item} className="flex flex-col gap-5">
-          <img src="/logo.svg" alt="OenoHub.ge" className="h-8 w-auto self-start" />
+          <img src="/logo-dark.svg" alt="OenoHub.ge" className="h-8 w-auto self-start" />
           <p className="max-w-xs text-sm leading-relaxed text-ink-600">
             {d.footer.tagline}
           </p>
