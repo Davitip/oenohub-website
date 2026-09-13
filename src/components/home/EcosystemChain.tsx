@@ -172,6 +172,15 @@ export default function EcosystemChain() {
               {d.home.chain.heading}
             </h2>
             <svg viewBox="0 0 600 600" className="w-full max-w-[520px]" role="img" aria-label={d.home.chain.diagramAria}>
+              <defs>
+                {/* gradient glow instead of an SVG blur filter — blur filters are
+                    repainted every frame during scroll-scrubbing and cause jank */}
+                <radialGradient id="chainNodeGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#C9A227" stopOpacity="0.55" />
+                  <stop offset="55%" stopColor="#C9A227" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="#C9A227" stopOpacity="0" />
+                </radialGradient>
+              </defs>
               <circle cx={300} cy={300} r={240} fill="none" stroke="#C9A227" strokeWidth={1} opacity={0.25} />
               <circle cx={300} cy={300} r={120} fill="none" stroke="#C9A227" strokeWidth={0.7} opacity={0.2} />
               {ARCS.map((d, i) => (
@@ -209,9 +218,8 @@ export default function EcosystemChain() {
                     cx={n.x}
                     cy={n.y}
                     r={58}
-                    fill="#C9A227"
+                    fill="url(#chainNodeGlow)"
                     opacity={0}
-                    style={{ filter: 'blur(18px)' }}
                   />
                   <circle cx={n.x} cy={n.y} r={46} fill="#3D0A18" stroke="#C9A227" strokeWidth={2} />
                   <circle cx={n.x} cy={n.y} r={38} fill="none" stroke="#C9A227" strokeWidth={0.8} opacity={0.5} />
