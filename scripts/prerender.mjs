@@ -8,7 +8,7 @@
  */
 import { createServer } from 'node:http'
 import { createReadStream, existsSync } from 'node:fs'
-import { cp, mkdir, rename, stat, writeFile } from 'node:fs/promises'
+import { mkdir, rename, stat, writeFile } from 'node:fs/promises'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import path from 'node:path'
@@ -96,41 +96,6 @@ function urlFor(lang, p) {
 function outFile(lang, p) {
   const rel = lang === 'en' ? path.join('en', p) : p
   return path.join(DIST, rel, 'index.html')
-}
-
-/* Committed snapshots: local builds (chromium available) refresh `prerendered/`;
- * CI builds (no chromium) restore them into dist/, so production always serves
- * prerendered HTML even though Cloudflare's container can't run a browser. */
-const SNAPSHOTS = path.join(ROOT, 'prerendered')
-
-function snapshotRelFiles() {
-  const files = []
-  for (const route of ROUTES)
-    for (const lang of ['ka', 'en']) files.push(path.relative(DIST, outFile(lang, route.path)))
-  return files
-}
-
-async function saveCommittedSnapshots() {
-  for (const rel of snapshotRelFiles()) {
-    const src = path.join(DIST, rel)
-    const dst = path.join(SNAPSHOTS, rel)
-    await mkdir(path.dirname(dst), { recursive: true })
-    await cp(src, dst)
-  }
-  console.log(`[prerender] committed snapshots refreshed -> prerendered/ (${snapshotRelFiles().length} files)`)
-}
-
-async function restoreCommittedSnapshots() {
-  let n = 0
-  for (const rel of snapshotRelFiles()) {
-    const src = path.join(SNAPSHOTS, rel)
-    if (!existsSync(src)) continue
-    const dst = path.join(DIST, rel)
-    await mkdir(path.dirname(dst), { recursive: true })
-    await cp(src, dst)
-    n++
-  }
-  return n
 }
 
 async function waitForServer(url, timeoutMs = 30000) {
@@ -313,8 +278,7 @@ async function main() {
 
     const browser = await launchBrowser()
     if (!browser) {
-      const n = await restoreCommittedSnapshots()
-      console.warn(`[prerender] WARNING: no chromium available — restored ${n} committed snapshots from prerendered/ into dist/ (deploy continues).`)
+      console.warn('[prerender] WARNING: no chromium available — skipping prerender. dist/ keeps the plain SPA build; deploy continues.')
       return
     }
     const page = await browser.newPage()
@@ -352,7 +316,6 @@ async function main() {
     }
 
     await browser.close()
-    await saveCommittedSnapshots()
   } finally {
     server.close()
   }
