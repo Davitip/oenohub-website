@@ -13,7 +13,7 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { chromium } from 'playwright'
+import { chromium } from 'playwright-core'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DIST = path.join(ROOT, 'dist')
@@ -223,7 +223,7 @@ const execFileAsync = promisify(execFile)
  * Resolve a working chromium and launch it. Order:
  *  1. explicit executable candidates (env CHROMIUM_PATH, system installs)
  *  2. playwright's own cached browsers (default launch)
- *  3. CI fallback: `npx playwright install chromium` once, then retry
+ *  3. CI fallback: `npx playwright-core install chromium` once, then retry
  * Returns null when nothing works — callers must treat that as "skip prerender".
  */
 async function launchBrowser() {
@@ -251,9 +251,9 @@ async function launchBrowser() {
   }
 
   // CI fallback: download a browser into the playwright cache (once per build).
-  console.warn('  [prerender] no local chromium found; running `npx playwright install chromium` ...')
+  console.warn('  [prerender] no local chromium found; running `npx playwright-core install chromium` ...')
   try {
-    const { stdout, stderr } = await execFileAsync('npx', ['playwright', 'install', 'chromium'], {
+    const { stdout, stderr } = await execFileAsync('npx', ['playwright-core', 'install', 'chromium'], {
       cwd: ROOT,
       maxBuffer: 16 * 1024 * 1024,
     })
@@ -261,7 +261,7 @@ async function launchBrowser() {
     if (stderr) console.warn(stderr.trim())
     return await chromium.launch({})
   } catch (err) {
-    console.warn(`  [prerender] playwright install/launch fallback failed: ${err.message.split('\n')[0]}`)
+    console.warn(`  [prerender] playwright-core install/launch fallback failed: ${err.message.split('\n')[0]}`)
     return null
   }
 }
