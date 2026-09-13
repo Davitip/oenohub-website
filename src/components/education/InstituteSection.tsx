@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { memo } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { useLang } from '@/i18n/LanguageContext'
 import { btnPrimary } from '@/lib/styles'
 import { EASE, fadeUpItem, staggerContainer } from './shared'

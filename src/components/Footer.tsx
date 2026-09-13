@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Facebook, Instagram, Linkedin } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { useLang } from '@/i18n/LanguageContext'
 import { COMPANIES } from '@/lib/companies'
 

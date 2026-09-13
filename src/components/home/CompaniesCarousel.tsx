@@ -1,7 +1,7 @@
 import { motion, useMotionValue } from 'framer-motion'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { useLang } from '@/i18n/LanguageContext'
 import { CATEGORY_COLORS, COMPANIES } from '@/lib/companies'
 import { ghostLinkLight } from '@/lib/styles'

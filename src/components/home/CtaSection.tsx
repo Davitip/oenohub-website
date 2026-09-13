@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { btnPrimary, btnSecondaryDark } from '@/lib/styles'
 import { useLang } from '@/i18n/LanguageContext'
 

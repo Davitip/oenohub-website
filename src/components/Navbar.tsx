@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router'
+import { Link, NavLink } from '@/components/LocalizedLink'
+import { useLocation } from 'react-router'
 import { useLang, type Lang } from '@/i18n/LanguageContext'
 
 const LANGS: Lang[] = ['ka', 'en']

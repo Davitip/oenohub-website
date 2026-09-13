@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { ghostLinkDark } from '@/lib/styles'
 import { useLang } from '@/i18n/LanguageContext'
 

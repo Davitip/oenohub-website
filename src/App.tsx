@@ -13,11 +13,18 @@ export default function App() {
     <Layout>
       <Suspense fallback={null}>
         <Routes>
+          {/* Georgian (default) */}
           <Route path="/" element={<Home />} />
           <Route path="/ecosystem" element={<Ecosystem />} />
           <Route path="/education" element={<Education />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          {/* English mirror under the /en prefix (same pages; language comes from the URL) */}
+          <Route path="/en" element={<Home />} />
+          <Route path="/en/ecosystem" element={<Ecosystem />} />
+          <Route path="/en/education" element={<Education />} />
+          <Route path="/en/about" element={<About />} />
+          <Route path="/en/contact" element={<Contact />} />
         </Routes>
       </Suspense>
     </Layout>

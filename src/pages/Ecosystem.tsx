@@ -1,5 +1,5 @@
 import { ArrowRight, Factory, Network, PackageCheck, Sprout, Truck } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { useLang } from '@/i18n/LanguageContext'
 import { brands } from '@/lib/brandLogos'
 

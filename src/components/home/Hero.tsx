@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Component, lazy, Suspense, useRef, type ReactNode } from 'react'
-import { Link } from 'react-router'
+import { Link } from '@/components/LocalizedLink'
 import { scrollToId } from '@/hooks/use-lenis'
 import { useLang } from '@/i18n/LanguageContext'
 import { btnPrimary, btnSecondaryDark } from '@/lib/styles'

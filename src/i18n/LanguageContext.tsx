@@ -1,5 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react'
+import { useLocation, useNavigate } from 'react-router'
 import { en } from './en'
+import { langFromPath, localizedPath } from './localePath'
 import { ka } from './ka'
 
 export type Lang = 'ka' | 'en'
@@ -20,12 +22,6 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
-function readStoredLang(): Lang {
-  if (typeof window === 'undefined') return 'ka'
-  const stored = window.localStorage.getItem(STORAGE_KEY)
-  return stored === 'en' || stored === 'ka' ? stored : 'ka'
-}
-
 function resolvePath(dict: unknown, path: string): string {
   let node: unknown = dict
   for (const part of path.split('.')) {
@@ -36,7 +32,11 @@ function resolvePath(dict: unknown, path: string): string {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readStoredLang)
+  const location = useLocation()
+  const navigate = useNavigate()
+  // The URL is the source of truth: /en/* renders English, everything else Georgian.
+  // localStorage only disambiguates the very first visit before any navigation.
+  const lang: Lang = langFromPath(location.pathname)
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -47,11 +47,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const d = DICTS[lang]
     return {
       lang,
-      setLang: setLangState,
+      setLang: (next: Lang) => {
+        if (next === lang) return
+        const target = localizedPath(location.pathname, next)
+        navigate(target + location.search + location.hash)
+      },
       d,
       t: (path: string) => resolvePath(d, path),
     }
-  }, [lang])
+  }, [lang, location.pathname, location.search, location.hash, navigate])
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
