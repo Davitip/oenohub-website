@@ -24,20 +24,18 @@ export default function PhilosophyRing() {
   return (
     <section
       ref={ref}
-      data-theme="dark"
-      className="relative overflow-hidden bg-burgundy-950 py-[72px] lg:py-[120px]"
+      className="relative overflow-hidden bg-white py-[72px] lg:py-[120px]"
     >
-      <div className="grain-overlay" aria-hidden="true" />
       <div className="relative mx-auto max-w-[1280px] px-6 text-center lg:px-12">
         <motion.h2
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20% 0px' }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="mx-auto max-w-3xl font-serif text-3xl font-semibold leading-[1.15] text-milk lg:text-[44px]"
+          className="mx-auto max-w-3xl font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
         >
-          {d.about.ring.headingPre}<span className="font-display italic text-gold-400">{d.about.ring.italic1}</span>{d.about.ring.headingMid}
-          <span className="font-display italic text-gold-400">{d.about.ring.italic2}</span>
+          {d.about.ring.headingPre}<span className="text-gold-600">{d.about.ring.italic1}</span>{d.about.ring.headingMid}
+          <span className="text-gold-600">{d.about.ring.italic2}</span>
         </motion.h2>
 
         {/* ring diagram with orbiting labels */}
@@ -62,7 +60,7 @@ export default function PhilosophyRing() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: '-15% 0px' }}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.12, ease: EASE }}
-              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold-500/30 bg-burgundy-950/80 px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-gold-300 backdrop-blur-sm lg:px-4 lg:py-1.5 lg:text-xs"
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold-500/40 bg-white/90 px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-gold-600 backdrop-blur-sm lg:px-4 lg:py-1.5 lg:text-xs"
               style={POSITIONS[i]}
             >
               {label}
@@ -75,7 +73,7 @@ export default function PhilosophyRing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20% 0px' }}
           transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-          className="mx-auto mt-14 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
+          className="mx-auto mt-14 max-w-[62ch] text-lg leading-[1.7] text-ink-600"
         >
           {d.about.ring.text}
         </motion.p>

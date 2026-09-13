@@ -25,7 +25,7 @@ const ARC_LEN = 227
 const NODE_ICONS = [
   // chip
   (x: number, y: number) => (
-    <g stroke="#EBD48A" strokeWidth={2.5} fill="none">
+    <g stroke="#96791B" strokeWidth={2.5} fill="none">
       <rect x={x - 14} y={y - 14} width={28} height={28} rx={4} />
       <path
         d={`M${x - 6} ${y - 22}v8M${x + 6} ${y - 22}v8M${x - 6} ${y + 14}v8M${x + 6} ${y + 14}v8M${x - 22} ${y - 6}h8M${x - 22} ${y + 6}h8M${x + 14} ${y - 6}h8M${x + 14} ${y + 6}h8`}
@@ -34,7 +34,7 @@ const NODE_ICONS = [
   ),
   // bottle
   (x: number, y: number) => (
-    <g stroke="#EBD48A" strokeWidth={2.5} fill="none">
+    <g stroke="#96791B" strokeWidth={2.5} fill="none">
       <path
         d={`M${x - 5} ${y - 20}h10v10c8 4 11 10 11 18v14a6 6 0 0 1-6 6h-20a6 6 0 0 1-6-6v-14c0-8 3-14 11-18v-10z`}
       />
@@ -43,7 +43,7 @@ const NODE_ICONS = [
   ),
   // truck
   (x: number, y: number) => (
-    <g stroke="#EBD48A" strokeWidth={2.5} fill="none">
+    <g stroke="#96791B" strokeWidth={2.5} fill="none">
       <path d={`M${x - 18} ${y - 8}h20v16h-20zM${x + 2} ${y - 2}h10l6 6v4h-16z`} />
       <circle cx={x - 10} cy={y + 12} r={4} />
       <circle cx={x + 10} cy={y + 12} r={4} />
@@ -51,7 +51,7 @@ const NODE_ICONS = [
   ),
   // graduation cap
   (x: number, y: number) => (
-    <g stroke="#EBD48A" strokeWidth={2.5} fill="none">
+    <g stroke="#96791B" strokeWidth={2.5} fill="none">
       <path d={`M${x - 16} ${y - 16}l16 8 16-8-16-8z`} />
       <path d={`M${x - 8} ${y - 11}v10c0 4 16 4 16 0v-10`} />
       <path d={`M${x + 16} ${y - 16}v14`} />
@@ -144,10 +144,8 @@ export default function EcosystemChain() {
     <section
       id="chain"
       ref={sectionRef}
-      data-theme="dark"
-      className="relative overflow-hidden bg-burgundy-900"
+      className="relative overflow-hidden bg-cream-100"
     >
-      <div className="grain-overlay" aria-hidden="true" />
 
       {/* ===== Desktop pinned version ===== */}
       <div ref={pinRef} className="relative hidden min-h-[100dvh] items-center pb-16 pt-28 lg:flex">
@@ -164,11 +162,11 @@ export default function EcosystemChain() {
 
           {/* diagram */}
           <div>
-            <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
+            <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-600">
               <span className="inline-block h-px w-8 bg-gold-500" />
               {d.home.chain.eyebrow}
             </p>
-            <h2 className="mb-8 font-serif text-4xl font-semibold text-milk">
+            <h2 className="mb-8 font-sans text-4xl font-semibold text-ink-900">
               {d.home.chain.heading}
             </h2>
             <svg viewBox="0 0 600 600" className="w-full max-w-[520px]" role="img" aria-label={d.home.chain.diagramAria}>
@@ -195,7 +193,7 @@ export default function EcosystemChain() {
                 />
               ))}
               {/* center grape cluster */}
-              <g stroke="#EBD48A" strokeWidth={2}>
+              <g stroke="#96791B" strokeWidth={2}>
                 {/* stem */}
                 <path d="M300 240 C300 232 306 226 314 222" fill="none" />
                 {/* leaf */}
@@ -233,12 +231,12 @@ export default function EcosystemChain() {
           <div className="relative min-h-[320px]">
             {STAGES.map((s, i) => (
               <div key={s.title} className="chain-block absolute inset-0 flex flex-col justify-center">
-                <span className="font-display text-6xl font-semibold text-gold-500/30">
+                <span className="font-sans text-6xl font-semibold text-gold-600/30">
                   0{i + 1}
                 </span>
-                <h3 className="mt-4 font-serif text-3xl font-semibold text-gold-400">{s.title}</h3>
-                <p className="mt-2 text-sm font-medium tracking-wide text-milk/60">{s.companies}</p>
-                <p className="mt-5 max-w-[46ch] text-base leading-[1.7] text-milk/85">{s.text}</p>
+                <h3 className="mt-4 font-sans text-3xl font-semibold text-gold-600">{s.title}</h3>
+                <p className="mt-2 text-sm font-medium tracking-wide text-ink-600">{s.companies}</p>
+                <p className="mt-5 max-w-[46ch] text-base leading-[1.7] text-ink-600">{s.text}</p>
               </div>
             ))}
           </div>
@@ -247,27 +245,27 @@ export default function EcosystemChain() {
 
       {/* ===== Mobile stacked version ===== */}
       <div className="mx-auto max-w-[1280px] px-6 py-20 lg:hidden">
-        <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
+        <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-600">
           <span className="inline-block h-px w-8 bg-gold-500" />
           {d.home.chain.eyebrow}
         </p>
-        <h2 className="mb-10 font-serif text-3xl font-semibold text-milk">
+        <h2 className="mb-10 font-sans text-3xl font-semibold text-ink-900">
           {d.home.chain.heading}
         </h2>
         <div className="flex flex-col gap-6">
           {STAGES.map((s, i) => (
             <div
               key={s.title}
-              className="chain-mobile-card rounded-[20px] border border-gold-500/25 bg-burgundy-950/60 p-6"
+              className="chain-mobile-card rounded-[20px] border border-black/10 bg-white shadow-sm p-6"
             >
               <div className="flex items-baseline gap-4">
-                <span className="font-display text-4xl font-semibold text-gold-500/40">
+                <span className="font-sans text-4xl font-semibold text-gold-600/40">
                   0{i + 1}
                 </span>
-                <h3 className="font-serif text-2xl font-semibold text-gold-400">{s.title}</h3>
+                <h3 className="font-sans text-2xl font-semibold text-gold-600">{s.title}</h3>
               </div>
-              <p className="mt-2 text-xs font-medium tracking-wide text-milk/60">{s.companies}</p>
-              <p className="mt-3 text-sm leading-[1.7] text-milk/85">{s.text}</p>
+              <p className="mt-2 text-xs font-medium tracking-wide text-ink-600">{s.companies}</p>
+              <p className="mt-3 text-sm leading-[1.7] text-ink-600">{s.text}</p>
             </div>
           ))}
         </div>

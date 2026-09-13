@@ -33,13 +33,12 @@ export default function BrandFilm() {
   const { d } = useLang()
 
   return (
-    <section data-theme="dark" className="relative overflow-hidden bg-burgundy-950 py-[72px] lg:py-[120px]">
-      <div className="grain-overlay" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-white py-[72px] lg:py-[120px]">
 
       <div className="relative mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
           <motion.span
-            className="text-xs font-medium uppercase tracking-[0.28em] text-gold-400"
+            className="text-xs font-medium uppercase tracking-[0.28em] text-gold-600"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -49,7 +48,7 @@ export default function BrandFilm() {
           </motion.span>
 
           <motion.h2
-            className="mt-5 font-serif text-3xl leading-[1.15] text-milk md:text-[44px]"
+            className="mt-5 font-sans text-3xl leading-[1.15] text-ink-900 md:text-[44px]"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -59,7 +58,7 @@ export default function BrandFilm() {
           </motion.h2>
 
           <motion.p
-            className="mt-5 text-base leading-[1.7] text-milk/60"
+            className="mt-5 text-base leading-[1.7] text-ink-600"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -70,7 +69,7 @@ export default function BrandFilm() {
         </div>
 
         <motion.div
-          className="relative mt-12 overflow-hidden rounded-2xl border border-gold-500/20 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.8)]"
+          className="relative mt-12 overflow-hidden rounded-2xl border border-black/10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]"
           initial={{ opacity: 0, y: 32, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: '-15% 0px' }}

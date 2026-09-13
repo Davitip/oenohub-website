@@ -34,7 +34,7 @@ export default function Stats() {
                 aria-hidden="true"
               />
             )}
-            <span className="font-display text-6xl font-semibold leading-none text-burgundy-800">
+            <span className="font-sans text-6xl font-semibold leading-none text-burgundy-800">
               <Counter value={s.value} duration={1.6} />
             </span>
             <span className="text-sm text-ink-600">{s.label}</span>

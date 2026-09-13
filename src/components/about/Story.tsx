@@ -17,7 +17,7 @@ export default function Story() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-20% 0px' }}
               transition={{ duration: 0.7, ease: EASE }}
-              className="text-xs font-semibold tracking-[0.22em] text-gold-500"
+              className="text-xs font-semibold tracking-[0.22em] text-gold-600"
             >
               {d.about.story.eyebrow}
             </motion.p>
@@ -26,7 +26,7 @@ export default function Story() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-20% 0px' }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-              className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
+              className="mt-4 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
             >
               {d.about.story.heading}
             </motion.h2>

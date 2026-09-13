@@ -20,8 +20,7 @@ export default function TrustStrip() {
     label: d.home.trust.facts[i],
   }))
   return (
-    <section data-theme="dark" className="relative bg-burgundy-950">
-      <div className="h-px w-full bg-gold-line" aria-hidden="true" />
+    <section className="relative border-y border-black/10 bg-white">
       <div className="mx-auto max-w-[1280px] px-6 py-10 lg:px-12">
         <motion.div
           className="grid grid-cols-2 gap-8 md:grid-cols-4"
@@ -39,18 +38,17 @@ export default function TrustStrip() {
                 show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
               }}
             >
-              <f.icon className="h-7 w-7 shrink-0 text-gold-500" strokeWidth={1.5} />
+              <f.icon className="h-7 w-7 shrink-0 text-gold-600" strokeWidth={1.5} />
               <div>
-                <div className="font-display text-3xl font-semibold leading-none text-gold-400">
+                <div className="font-sans text-3xl font-semibold leading-none tracking-[-0.02em] text-ink-900">
                   <Counter value={f.value} suffix={f.suffix} duration={1.4} />
                 </div>
-                <div className="mt-1.5 text-xs leading-snug text-milk/70">{f.label}</div>
+                <div className="mt-1.5 text-xs leading-snug text-ink-600">{f.label}</div>
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
-      <div className="h-px w-full bg-gold-line" aria-hidden="true" />
     </section>
   )
 }

@@ -9,8 +9,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number]
 export default function LocationBand() {
   const { d } = useLang()
   return (
-    <section data-theme="dark" className="relative overflow-hidden bg-burgundy-950 py-14">
-      <div className="h-px w-full bg-gold-line absolute top-0" aria-hidden="true" />
+    <section className="relative overflow-hidden border-y border-black/10 bg-white py-14">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,11 +20,11 @@ export default function LocationBand() {
         <motion.span
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-gold-500/40 text-gold-400"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 text-gold-600"
         >
           <MapPin className="h-5 w-5" strokeWidth={1.8} />
         </motion.span>
-        <p className="font-serif text-xl text-milk lg:text-2xl">
+        <p className="font-sans text-xl text-ink-900 lg:text-2xl">
           {d.contact.location.text}
         </p>
         <Link to="/" className={ghostLinkDark}>

@@ -15,7 +15,7 @@ export default function AudienceGrid() {
         {/* section header */}
         <div className="mx-auto max-w-2xl text-center">
           <motion.p
-            className="text-xs font-semibold tracking-[0.06em] text-gold-500"
+            className="text-xs font-semibold tracking-[0.06em] text-gold-600"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
@@ -24,7 +24,7 @@ export default function AudienceGrid() {
             {d.education.audience.eyebrow}
           </motion.p>
           <motion.h2
-            className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
+            className="mt-4 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
@@ -55,9 +55,9 @@ export default function AudienceGrid() {
               transition={{ delay: i * 0.1, duration: 0.7, ease: EASE }}
             >
               <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold-500/40 bg-gold-500/10">
-                <a.icon className="h-5 w-5 text-gold-500" strokeWidth={1.8} aria-hidden="true" />
+                <a.icon className="h-5 w-5 text-gold-600" strokeWidth={1.8} aria-hidden="true" />
               </span>
-              <h3 className="mt-5 font-serif text-lg font-semibold leading-snug text-ink-900 lg:text-xl">
+              <h3 className="mt-5 font-sans text-lg font-semibold leading-snug text-ink-900 lg:text-xl">
                 {a.title}
               </h3>
               <p className="mt-2 text-sm leading-[1.6] text-ink-600">{a.desc}</p>

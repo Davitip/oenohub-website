@@ -8,18 +8,11 @@ export default function Quote() {
   const words = d.home.quote.text.split(' ')
 
   return (
-    <section data-theme="dark" className="relative overflow-hidden bg-burgundy-950 py-[72px] lg:py-[120px]">
-      <img
-        src="/texture-barrel.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover opacity-[0.12]"
-      />
-      <div className="grain-overlay" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-cream-100 py-[72px] lg:py-[120px]">
 
       <div className="relative mx-auto max-w-[800px] px-6 text-center">
         <motion.span
-          className="block font-display text-[120px] leading-[0.6] text-gold-500/30"
+          className="block font-sans text-[120px] leading-[0.6] text-gold-600/30"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: '-25% 0px' }}
@@ -30,7 +23,7 @@ export default function Quote() {
         </motion.span>
 
         <motion.blockquote
-          className="mt-6 font-serif text-2xl leading-[1.5] text-milk md:text-[32px]"
+          className="mt-6 font-sans text-2xl leading-[1.5] text-ink-900 md:text-[32px]"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-25% 0px' }}
@@ -52,7 +45,7 @@ export default function Quote() {
         </motion.blockquote>
 
         <motion.p
-          className="mt-8 text-sm tracking-[0.06em] text-gold-400"
+          className="mt-8 text-sm tracking-[0.06em] text-gold-600"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

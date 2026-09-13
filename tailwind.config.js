@@ -61,18 +61,22 @@ module.exports = {
           300: '#EBD48A',
           400: '#DDBC4E',
           500: '#C9A227',
+          600: '#96791B',
+          700: '#7A6114',
         },
+        // Apple-like neutrals: white / #f5f5f7 / hairline
         cream: {
-          50: '#FAF6EC',
-          100: '#F3ECDC',
-          200: '#E7DCC4',
+          50: '#FFFFFF',
+          100: '#F5F5F7',
+          200: '#E4E4E9',
         },
+        // Apple text ramp: #1d1d1f / #6e6e73 / #86868b
         ink: {
-          900: '#1C1410',
-          600: '#5C4F45',
-          400: '#8A7B6D',
+          900: '#1D1D1F',
+          600: '#6E6E73',
+          400: '#86868B',
         },
-        milk: '#FDFBF5',
+        milk: '#FFFFFF',
         'vine-green': '#5A6B3F',
       },
       fontFamily: {
@@ -90,7 +94,7 @@ module.exports = {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-        'card-hover': '0 18px 40px -12px rgb(42 7 16 / 0.25)',
+        'card-hover': '0 18px 40px -12px rgb(0 0 0 / 0.14)',
         'gold-glow': '0 0 24px rgb(201 162 39 / 0.35)',
       },
       keyframes: {

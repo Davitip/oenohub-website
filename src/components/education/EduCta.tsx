@@ -34,7 +34,6 @@ export default function EduCta() {
   return (
     <section
       ref={ref}
-      data-theme="dark"
       className="bg-hero-gradient-reversed relative overflow-hidden py-[72px] lg:py-[120px]"
     >
       <motion.img
@@ -44,7 +43,6 @@ export default function EduCta() {
         className="pointer-events-none absolute -left-16 -top-16 w-[360px] opacity-[0.15]"
         style={{ rotate }}
       />
-      <div className="grain-overlay" aria-hidden="true" />
 
       <motion.div
         className="relative mx-auto max-w-3xl px-6 text-center"
@@ -53,10 +51,10 @@ export default function EduCta() {
         viewport={{ once: true, margin: '-20% 0px' }}
         transition={{ duration: 0.8, ease: EASE }}
       >
-        <h2 className="font-serif text-3xl font-semibold text-milk lg:text-[44px] lg:leading-[1.15]">
-          {d.education.cta.headingPre}<span className="font-display italic text-gold-400">{d.education.cta.headingItalic}</span>{d.education.cta.headingPost}
+        <h2 className="font-sans text-3xl font-semibold text-ink-900 lg:text-[44px] lg:leading-[1.15]">
+          {d.education.cta.headingPre}<span className="text-gold-600">{d.education.cta.headingItalic}</span>{d.education.cta.headingPost}
         </h2>
-        <p className="mx-auto mt-5 max-w-[56ch] leading-[1.7] text-milk/80">
+        <p className="mx-auto mt-5 max-w-[56ch] leading-[1.7] text-ink-600">
           {d.education.cta.text}
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">

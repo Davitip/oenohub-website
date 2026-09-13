@@ -16,11 +16,11 @@ export default function PartnerBrands() {
   const { d, lang } = useLang()
 
   return (
-    <section data-theme="light" className="relative bg-[#f3efe7] py-[72px] lg:py-[110px]">
+    <section className="relative bg-cream-100 py-[72px] lg:py-[110px]">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mx-auto max-w-[720px] text-center">
           <motion.span
-            className="text-xs font-medium uppercase tracking-[0.28em] text-[#8d6042]"
+            className="text-xs font-medium uppercase tracking-[0.28em] text-gold-600"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -30,7 +30,7 @@ export default function PartnerBrands() {
           </motion.span>
 
           <motion.h2
-            className="mt-5 font-serif text-3xl leading-[1.15] text-burgundy-950 md:text-[44px]"
+            className="mt-5 font-sans text-3xl leading-[1.15] text-ink-900 md:text-[44px]"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -40,7 +40,7 @@ export default function PartnerBrands() {
           </motion.h2>
 
           <motion.p
-            className="mt-5 text-sm leading-7 text-black/55 md:text-base"
+            className="mt-5 text-sm leading-7 text-ink-600 md:text-base"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-25% 0px' }}
@@ -63,14 +63,14 @@ export default function PartnerBrands() {
               href={b.href}
               target="_blank"
               rel="noreferrer"
-              className="group -ml-px -mt-px flex min-h-36 flex-col items-center justify-center border border-black/15 bg-[#f3efe7] p-6 transition hover:bg-white"
+              className="group -ml-px -mt-px flex min-h-36 flex-col items-center justify-center border border-black/10 bg-cream-100 p-6 transition hover:bg-white"
             >
               <img
                 src={b.logo}
                 alt={b.name}
                 className="h-10 w-auto max-w-[80%] object-contain transition group-hover:scale-105"
               />
-              <span className="mt-4 block text-center text-[9px] uppercase tracking-[0.16em] text-black/45">
+              <span className="mt-4 block text-center text-[9px] uppercase tracking-[0.16em] text-ink-400">
                 {b.name} · {lang === 'ka' ? b.countryKa : b.countryEn}
               </span>
             </a>

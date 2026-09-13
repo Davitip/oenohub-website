@@ -153,7 +153,7 @@ export default function ContactForm() {
                     transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
                   />
                 </motion.svg>
-                <h3 className="mt-6 font-serif text-2xl font-semibold text-ink-900">
+                <h3 className="mt-6 font-sans text-2xl font-semibold text-ink-900">
                   {f.successTitle}
                 </h3>
                 <p className="mt-2 text-ink-600">{f.successText}</p>
@@ -163,7 +163,7 @@ export default function ContactForm() {
               </motion.div>
             ) : (
               <>
-                <h3 className="font-serif text-2xl font-semibold text-ink-900">
+                <h3 className="font-sans text-2xl font-semibold text-ink-900">
                   {f.title}
                 </h3>
                 <form onSubmit={onSubmit} noValidate className="mt-8 flex flex-col gap-6">
@@ -264,7 +264,7 @@ export default function ContactForm() {
           <div data-theme="dark" className="relative overflow-hidden rounded-[20px] bg-burgundy-900 p-6 text-milk lg:p-10">
             <div className="grain-overlay" aria-hidden="true" />
             <div className="relative">
-              <h3 className="font-serif text-2xl font-semibold">{d.contact.direct.title}</h3>
+              <h3 className="font-sans text-2xl font-semibold">{d.contact.direct.title}</h3>
               <ul className="mt-8 flex flex-col gap-6">
                 {COORDS.map((c, i) => (
                   <motion.li

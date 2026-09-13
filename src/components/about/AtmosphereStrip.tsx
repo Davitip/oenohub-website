@@ -23,7 +23,7 @@ export default function AtmosphereStrip() {
 
       <div className="relative flex h-full items-center justify-center px-6">
         <blockquote className="max-w-4xl text-center">
-          <p className="font-serif text-2xl font-semibold leading-[1.3] text-milk lg:text-4xl">
+          <p className="font-sans text-2xl font-semibold leading-[1.3] text-milk lg:text-4xl">
             {QUOTE_WORDS.map((w, i) => (
               <motion.span
                 key={i}

@@ -16,7 +16,7 @@ export default function Faq() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-20% 0px' }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="text-xs font-semibold tracking-[0.22em] text-gold-500"
+            className="text-xs font-semibold tracking-[0.22em] text-gold-600"
           >
             {d.contact.faq.eyebrow}
           </motion.p>
@@ -25,7 +25,7 @@ export default function Faq() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20% 0px' }}
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-            className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
+            className="mt-4 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
             {d.contact.faq.heading}
           </motion.h2>
@@ -44,7 +44,7 @@ export default function Faq() {
                 value={`faq-${i}`}
                 className="rounded-2xl border border-cream-200 bg-cream-50 px-6 transition-colors duration-300 hover:border-gold-500/40 data-[state=open]:border-gold-500/50"
               >
-                <AccordionTrigger className="py-5 text-left font-serif text-lg font-semibold text-ink-900 hover:no-underline [&>svg]:text-gold-500 [&>svg]:transition-transform [&>svg]:duration-300">
+                <AccordionTrigger className="py-5 text-left font-sans text-lg font-semibold text-ink-900 hover:no-underline [&>svg]:text-gold-600 [&>svg]:transition-transform [&>svg]:duration-300">
                   {f.q}
                 </AccordionTrigger>
                 <AccordionContent className="leading-[1.7] text-ink-600">{f.a}</AccordionContent>

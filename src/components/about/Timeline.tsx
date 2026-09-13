@@ -24,7 +24,7 @@ export default function Timeline() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-20% 0px' }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="text-xs font-semibold tracking-[0.22em] text-gold-500"
+            className="text-xs font-semibold tracking-[0.22em] text-gold-600"
           >
             {d.about.timeline.eyebrow}
           </motion.p>
@@ -33,7 +33,7 @@ export default function Timeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20% 0px' }}
             transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
-            className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
+            className="mt-4 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
             {d.about.timeline.heading}
           </motion.h2>
@@ -88,10 +88,10 @@ export default function Timeline() {
                     }`}
                   >
                     <div className="rounded-[20px] border border-cream-200 bg-cream-100 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover lg:p-8">
-                      <p className="font-display text-3xl font-semibold italic text-gold-500">
+                      <p className="font-sans text-3xl font-semibold italic text-gold-600">
                         {String(i + 1).padStart(2, '0')}
                       </p>
-                      <h3 className="mt-2 font-serif text-xl font-semibold text-ink-900 lg:text-2xl">
+                      <h3 className="mt-2 font-sans text-xl font-semibold text-ink-900 lg:text-2xl">
                         {s.title}
                       </h3>
                       <p className="mt-3 leading-[1.7] text-ink-600">{s.text}</p>

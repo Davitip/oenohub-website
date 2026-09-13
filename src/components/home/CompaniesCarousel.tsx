@@ -58,12 +58,12 @@ export default function CompaniesCarousel() {
             transition={{ duration: 0.8, ease: EASE }}
             className="max-w-2xl"
           >
-            <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-500">
+            <p className="mb-3 flex items-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-600">
               <span className="inline-block h-px w-8 bg-gold-500" />
               {d.home.carousel.eyebrow}
             </p>
-            <h2 className="font-serif text-3xl font-semibold text-ink-900 lg:text-[44px] lg:leading-[1.15]">
-              {d.home.carousel.headingPre}<span className="font-display italic text-burgundy-700">{d.home.carousel.headingItalic}</span>
+            <h2 className="font-sans text-3xl font-semibold text-ink-900 lg:text-[44px] lg:leading-[1.15]">
+              {d.home.carousel.headingPre}<span className="text-burgundy-700">{d.home.carousel.headingItalic}</span>
             </h2>
             <p className="mt-4 max-w-[62ch] leading-[1.7] text-ink-600">
               {d.home.carousel.text}
@@ -129,7 +129,7 @@ export default function CompaniesCarousel() {
                   className="h-12 w-auto self-start"
                   draggable={false}
                 />
-                <h3 className="font-serif text-[26px] font-semibold leading-[1.25] text-ink-900">
+                <h3 className="font-sans text-[26px] font-semibold leading-[1.25] text-ink-900">
                   {c.name}
                 </h3>
                 <p className="text-sm leading-[1.7] text-ink-600">{d.companies.items[c.id].description}</p>

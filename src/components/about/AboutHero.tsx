@@ -15,36 +15,29 @@ export default function AboutHero() {
   return (
     <section
       ref={ref}
-      data-theme="dark"
-      className="relative -mt-20 flex min-h-[60vh] items-center justify-center overflow-hidden bg-burgundy-950 pb-16 pt-40"
+      className="bg-hero-gradient relative -mt-20 flex min-h-[60vh] items-center justify-center overflow-hidden pb-16 pt-40"
     >
-      {/* barrel texture background, opacity 0.3 + parallax + zoom-out on load */}
-      <motion.div className="absolute inset-0" style={{ y }} aria-hidden="true">
-        <motion.img
-          src="/texture-barrel.png"
-          alt=""
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2, ease: EASE }}
-          className="h-[135%] w-full object-cover opacity-30"
-        />
-      </motion.div>
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-burgundy-950/70 via-burgundy-900/40 to-burgundy-950"
+      {/* soft parallax tint field, 0.35x */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          y,
+          background:
+            'radial-gradient(45% 35% at 70% 30%, rgba(201,162,39,0.10), transparent 70%), radial-gradient(40% 32% at 25% 65%, rgba(61,10,24,0.05), transparent 70%)',
+        }}
         aria-hidden="true"
       />
-      <div className="grain-overlay" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="text-xs font-semibold tracking-[0.22em] text-gold-400"
+          className="text-xs font-semibold tracking-[0.22em] text-gold-600"
         >
           {d.about.hero.eyebrow}
         </motion.p>
-        <h1 className="mt-6 font-serif text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-milk lg:text-6xl">
+        <h1 className="mt-6 font-sans text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-ink-900 lg:text-6xl">
           {TITLE_WORDS.map((w, i) => (
             <motion.span
               key={i}
@@ -61,7 +54,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
-          className="mx-auto mt-6 max-w-[62ch] text-lg leading-[1.7] text-milk/80"
+          className="mx-auto mt-6 max-w-[62ch] text-lg leading-[1.7] text-ink-600"
         >
           {d.about.hero.sub}
         </motion.p>

@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 44 55% 95%;
-    --foreground: 24 26% 9%;
-    --card: 42 46% 91%;
-    --card-foreground: 24 26% 9%;
+    --background: 0 0% 100%;
+    --foreground: 240 4% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 4% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 24 26% 9%;
-    --primary: 340 67% 25%;
-    --primary-foreground: 45 60% 97%;
-    --secondary: 46 27% 51%;
-    --secondary-foreground: 340 67% 12%;
-    --muted: 42 30% 85%;
-    --muted-foreground: 28 14% 41%;
-    --accent: 46 27% 51%;
-    --accent-foreground: 340 67% 12%;
+    --popover-foreground: 240 4% 12%;
+    --primary: 338 71% 14%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 4% 12%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 44 58% 36%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 41 35% 84%;
-    --input: 41 35% 84%;
-    --ring: 46 27% 51%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 44 58% 36%;
     --radius: 0.625rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -79,18 +79,30 @@
   }
 
   ::selection {
-    background: #c9a227;
-    color: #2a0710;
+    background: rgb(201 162 39 / 0.3);
+    color: #1d1d1f;
   }
 }
 
 @layer utilities {
-  /* "cellar" hero gradient from design.md */
+  /* calm light hero gradients (Apple-style airy neutrals with a faint warm tint) */
   .bg-hero-gradient {
-    background: radial-gradient(120% 90% at 50% 10%, #6b1530 0%, #3d0a18 55%, #2a0710 100%);
+    background:
+      radial-gradient(60% 45% at 78% 18%, rgb(201 162 39 / 0.10), transparent 70%),
+      radial-gradient(55% 45% at 18% 30%, rgb(61 10 24 / 0.06), transparent 70%),
+      linear-gradient(180deg, #ffffff 0%, #f5f5f7 78%, #ececf1 100%);
   }
   .bg-hero-gradient-reversed {
-    background: radial-gradient(120% 90% at 50% 100%, #6b1530 0%, #3d0a18 55%, #2a0710 100%);
+    background:
+      radial-gradient(55% 40% at 22% 82%, rgb(201 162 39 / 0.10), transparent 70%),
+      radial-gradient(50% 40% at 82% 70%, rgb(61 10 24 / 0.05), transparent 70%),
+      linear-gradient(0deg, #ffffff 0%, #f5f5f7 78%, #ececf1 100%);
+  }
+  /* frosted translucent material for navigation */
+  .bg-frosted {
+    background: rgb(255 255 255 / 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
   /* thin shimmering gold divider */
   .bg-gold-line {
@@ -143,20 +155,31 @@ html.lenis body {
 
 /* Georgian display typography fix — Mkhedruli needs breathing room:
    relax the negative tracking and ultra-tight leading designed for Latin headings */
-html[lang='ka'] h1.font-serif,
-html[lang='ka'] h2.font-serif,
-html[lang='ka'] h3.font-serif {
+html[lang='ka'] h1,
+html[lang='ka'] h2,
+html[lang='ka'] h3 {
   letter-spacing: -0.01em;
   line-height: 1.18;
 }
 
 /* Georgian display headings: cap the oversized Latin display scale so long
    Georgian words never overflow their columns */
-html[lang='ka'] h1.font-serif,
-html[lang='ka'] h2.font-serif {
+html[lang='ka'] h1,
+html[lang='ka'] h2 {
   font-size: clamp(2rem, 3.2vw, 3.4rem);
   line-height: 1.22;
 }
-html[lang='ka'] h3.font-serif {
-  letter-spacing: -0.01em;
+
+/* Respect reduced motion: no bouncing scroll hints, pulses or perpetual loops */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 }

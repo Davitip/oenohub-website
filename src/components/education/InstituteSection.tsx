@@ -78,11 +78,9 @@ export default function InstituteSection({
   return (
     <section
       id={id}
-      data-theme="dark"
-      className="relative scroll-mt-20 overflow-hidden bg-burgundy-900 py-[72px] lg:py-[120px]"
+      className={`relative scroll-mt-20 overflow-hidden py-[72px] lg:py-[120px] ${amberGlow ? "bg-cream-100" : "bg-white"}`}
     >
       {amberGlow && <AmberGlow />}
-      <div className="grain-overlay" aria-hidden="true" />
       <div
         className="relative mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:gap-14 lg:px-12"
       >
@@ -108,12 +106,12 @@ export default function InstituteSection({
           <img
             src={image}
             alt={imageAlt}
-            className="aspect-[3/2] w-full rounded-[20px] border border-gold-500/25 object-cover shadow-2xl"
+            className="aspect-[3/2] w-full rounded-[20px] border border-black/10 object-cover shadow-2xl"
           />
           <motion.img
             src={emblem}
             alt={emblemAlt}
-            className={`absolute -bottom-8 h-20 w-20 rounded-full border-2 border-gold-500/60 bg-burgundy-950 object-cover shadow-xl ${
+            className={`absolute -bottom-8 h-20 w-20 rounded-full border-2 border-gold-500/60 bg-white object-cover shadow-xl ${
               mirrored ? '-left-6' : '-right-6'
             }`}
             initial={{ scale: 0.5, opacity: 0 }}
@@ -139,11 +137,11 @@ export default function InstituteSection({
           </motion.span>
           <motion.h2
             variants={fadeUpItem}
-            className="mt-5 font-serif text-3xl font-semibold leading-[1.15] text-milk lg:text-[44px]"
+            className="mt-5 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
           >
             {d.education.quoteOpen}{title}{d.education.quoteClose}
           </motion.h2>
-          <motion.p variants={fadeUpItem} className="mt-5 max-w-[62ch] leading-[1.7] text-milk/80">
+          <motion.p variants={fadeUpItem} className="mt-5 max-w-[62ch] leading-[1.7] text-ink-600">
             {lead}
           </motion.p>
 
@@ -153,12 +151,12 @@ export default function InstituteSection({
               <motion.div
                 key={p.title}
                 variants={fadeUpItem}
-                className="sheen flex-1 rounded-[20px] border border-gold-500/25 bg-white/[0.04] p-5 transition-all duration-300 hover:border-gold-500/50"
+                className="flex-1 rounded-[20px] border border-black/10 bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-card-hover"
               >
-                <h3 className="font-serif text-lg font-semibold leading-snug text-gold-300">
+                <h3 className="font-sans text-lg font-semibold leading-snug text-ink-900">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-[1.6] text-milk/70">{p.desc}</p>
+                <p className="mt-2 text-sm leading-[1.6] text-ink-600">{p.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -168,7 +166,7 @@ export default function InstituteSection({
             {checklist.map((item, i) => (
               <motion.li
                 key={item}
-                className="flex items-start gap-3 text-[15px] leading-relaxed text-milk/85"
+                className="flex items-start gap-3 text-[15px] leading-relaxed text-ink-600"
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-10% 0px' }}

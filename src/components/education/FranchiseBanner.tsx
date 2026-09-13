@@ -10,7 +10,7 @@ export default function FranchiseBanner() {
   return (
     <section data-theme="dark" className="relative overflow-hidden">
       <motion.div
-        className="bg-gradient-to-r from-gold-500 to-gold-400 text-burgundy-950"
+        className="border-y border-black/10 bg-white text-ink-900"
         initial={{ clipPath: 'inset(0 100% 0 0)' }}
         whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
         viewport={{ once: true, margin: '-15% 0px' }}
@@ -24,8 +24,8 @@ export default function FranchiseBanner() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.7, ease: EASE }}
           >
-            <BadgeCheck className="h-8 w-8 shrink-0" strokeWidth={1.8} aria-hidden="true" />
-            <p className="font-serif text-lg font-semibold leading-snug sm:text-[22px]">
+            <BadgeCheck className="h-8 w-8 shrink-0 text-gold-600" strokeWidth={1.8} aria-hidden="true" />
+            <p className="font-sans text-lg font-semibold leading-snug sm:text-[22px]">
               {d.education.banner.text}
             </p>
           </motion.div>
@@ -33,7 +33,7 @@ export default function FranchiseBanner() {
             {PILLS.map((pill, i) => (
               <motion.span
                 key={pill}
-                className="rounded-full border border-burgundy-950/50 px-5 py-1.5 font-display text-sm font-semibold tracking-wide"
+                className="rounded-full border border-gold-500/60 px-5 py-1.5 font-sans text-sm font-semibold tracking-wide text-gold-700"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}

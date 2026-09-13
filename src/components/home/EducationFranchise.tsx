@@ -12,8 +12,7 @@ export default function EducationFranchise() {
   const images = ['/edu-sommelier.png', '/edu-whisky.png']
   const CARDS = d.home.edu.cards.map((c, i) => ({ ...c, image: images[i], badge: d.home.edu.badge }))
   return (
-    <section data-theme="dark" className="relative overflow-hidden bg-burgundy-900 py-[72px] lg:py-[120px]">
-      <div className="grain-overlay" aria-hidden="true" />
+    <section className="relative overflow-hidden bg-cream-100 py-[72px] lg:py-[120px]">
       <div className="relative mx-auto max-w-[1280px] px-6 lg:px-12">
         {/* centered header */}
         <motion.div
@@ -23,14 +22,14 @@ export default function EducationFranchise() {
           viewport={{ once: true, margin: '-20% 0px' }}
           transition={{ duration: 0.8, ease: EASE }}
         >
-          <p className="mb-3 flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-400">
+          <p className="mb-3 flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.06em] text-gold-600">
             <span className="inline-block h-px w-8 bg-gold-500" />
             {d.home.edu.eyebrow}
             <span className="inline-block h-px w-8 bg-gold-500" />
           </p>
-          <h2 className="font-serif text-3xl font-semibold text-milk lg:text-[44px] lg:leading-[1.15]">
+          <h2 className="font-sans text-3xl font-semibold text-ink-900 lg:text-[44px] lg:leading-[1.15]">
             {d.home.edu.headingPre}
-            <span className="font-display italic text-gold-400">{d.home.edu.headingItalic}</span>
+            <span className="text-gold-600">{d.home.edu.headingItalic}</span>
           </h2>
         </motion.div>
 
@@ -48,7 +47,7 @@ export default function EducationFranchise() {
                 hidden: { opacity: 0, y: 40 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
               }}
-              className="group overflow-hidden rounded-[20px] border border-gold-500/25 bg-burgundy-950/60 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-500/50 hover:shadow-card-hover"
+              className="group overflow-hidden rounded-[20px] border border-black/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-500/50 hover:shadow-card-hover"
             >
               <div className="relative aspect-[16/9] overflow-hidden">
                 <img
@@ -62,8 +61,8 @@ export default function EducationFranchise() {
                 </span>
               </div>
               <div className="flex flex-col gap-4 p-8">
-                <h3 className="font-display text-2xl font-semibold text-gold-300">{c.title}</h3>
-                <p className="text-sm leading-[1.7] text-milk/80">{c.body}</p>
+                <h3 className="font-sans text-2xl font-semibold text-ink-900">{c.title}</h3>
+                <p className="text-sm leading-[1.7] text-ink-600">{c.body}</p>
                 <Link to="/education" className={ghostLinkDark}>
                   {c.cta}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

@@ -20,7 +20,7 @@ export default function EnrollmentSteps() {
         {/* section header */}
         <div className="mx-auto max-w-2xl text-center">
           <motion.p
-            className="text-xs font-semibold tracking-[0.06em] text-gold-500"
+            className="text-xs font-semibold tracking-[0.06em] text-gold-600"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
@@ -29,7 +29,7 @@ export default function EnrollmentSteps() {
             {d.education.steps.eyebrow}
           </motion.p>
           <motion.h2
-            className="mt-4 font-serif text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
+            className="mt-4 font-sans text-3xl font-semibold leading-[1.15] text-ink-900 lg:text-[44px]"
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-15% 0px' }}
@@ -66,7 +66,7 @@ export default function EnrollmentSteps() {
                   viewport={{ once: true, margin: '-10% 0px' }}
                   transition={{ delay: i * 0.12, type: 'spring', stiffness: 240, damping: 18 }}
                 >
-                  <span className="font-display text-2xl font-semibold text-gold-500">
+                  <span className="font-sans text-2xl font-semibold text-gold-600">
                     {s.num}
                   </span>
                 </motion.div>
@@ -77,7 +77,7 @@ export default function EnrollmentSteps() {
                   viewport={{ once: true, margin: '-10% 0px' }}
                   transition={{ delay: 0.1 + i * 0.12, duration: 0.7, ease: EASE }}
                 >
-                  <h3 className="font-serif text-xl font-semibold text-ink-900">{s.title}</h3>
+                  <h3 className="font-sans text-xl font-semibold text-ink-900">{s.title}</h3>
                   <p className="mt-2 max-w-[30ch] text-sm leading-[1.7] text-ink-600">{s.desc}</p>
                 </motion.div>
               </li>

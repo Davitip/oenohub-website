@@ -26,7 +26,7 @@ function WordReveal({ words, delay }: { words: { text: string; gold?: boolean }[
       {words.map((w, i) => (
         <span key={i} className="inline-block overflow-hidden pb-1 align-bottom">
           <motion.span
-            className={`inline-block ${w.gold ? 'text-gold-400' : ''}`}
+            className={`inline-block ${w.gold ? 'text-gold-600' : ''}`}
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: delay + i * 0.09, duration: 0.9, ease: EASE }}
@@ -56,38 +56,28 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      data-theme="dark"
       className="bg-hero-gradient relative -mt-20 flex min-h-[100dvh] items-center justify-center overflow-hidden"
     >
-      {/* cellar photo, blend overlay, parallax 0.35x */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }} aria-hidden="true">
-        <img
-          src="/hero-cellar.png"
-          alt=""
-          className="h-[135%] w-full object-cover opacity-45 mix-blend-overlay"
-        />
-      </motion.div>
-
-      {/* CSS radial-gradient blob fallback / base glow */}
-      <div
+      {/* soft parallax tint field, 0.35x */}
+      <motion.div
         className="absolute inset-0"
-        aria-hidden="true"
         style={{
+          y: bgY,
           background:
-            'radial-gradient(40% 30% at 30% 40%, rgba(166,38,80,0.25), transparent 70%), radial-gradient(35% 28% at 72% 60%, rgba(201,162,39,0.14), transparent 70%)',
+            'radial-gradient(42% 32% at 28% 38%, rgba(201,162,39,0.12), transparent 70%), radial-gradient(38% 30% at 74% 62%, rgba(61,10,24,0.07), transparent 70%)',
         }}
+        aria-hidden="true"
       />
 
-      {/* 3D wine mist particles */}
+      {/* 3D wine mist particles (multiply so the gold mist reads on the light field) */}
       <WebGLBoundary>
         <Suspense fallback={null}>
-          <div className="absolute inset-0" aria-hidden="true">
+          <div className="absolute inset-0 mix-blend-multiply opacity-70" aria-hidden="true">
             <WineMist />
           </div>
         </Suspense>
       </WebGLBoundary>
 
-      <div className="grain-overlay" aria-hidden="true" />
 
       {/* content, parallax 0.85x */}
       <motion.div
@@ -103,7 +93,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.6, ease: EASE }}
           />
           <motion.span
-            className="text-xs font-semibold tracking-[0.06em] text-gold-400"
+            className="text-xs font-semibold tracking-[0.06em] text-gold-600"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -118,12 +108,12 @@ export default function Hero() {
           />
         </div>
 
-        <h1 className="font-serif text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-milk md:text-6xl lg:text-[72px]">
+        <h1 className="font-sans text-[40px] font-semibold leading-[1.08] tracking-[-0.01em] text-ink-900 md:text-6xl lg:text-[72px]">
           <WordReveal words={h1Words} delay={0.45} />
         </h1>
 
         <motion.p
-          className="mx-auto mt-8 max-w-[62ch] text-base leading-[1.7] text-milk/80 md:text-lg"
+          className="mx-auto mt-8 max-w-[62ch] text-base leading-[1.7] text-ink-600 md:text-lg"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.7, ease: EASE }}
@@ -174,7 +164,7 @@ export default function Hero() {
         transition={{ delay: 1.6, duration: 0.8 }}
         aria-label={d.home.hero.scroll}
       >
-        <span className="text-[11px] font-medium tracking-[0.2em] text-gold-400/80">
+        <span className="text-[11px] font-medium tracking-[0.2em] text-gold-600/80">
           {d.home.hero.scroll}
         </span>
         <span className="animate-scroll-bounce block h-10 w-px bg-gradient-to-b from-gold-500 to-transparent" />
