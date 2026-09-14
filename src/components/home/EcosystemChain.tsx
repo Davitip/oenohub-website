@@ -116,6 +116,72 @@ export default function EcosystemChain() {
         }
         // give the last stage breathing room
         tl.to({}, { duration: 0.6 })
+
+        // ── Auto-play: advance stages on a timer while the pinned section is
+        // in view; pauses when the user scrolls and resumes after idle ──
+        const total = tl.duration()
+        // mid-point of each stage in timeline time (transitions at t = 1, 2, 3)
+        const checkpoints = [0.5, 1.6, 2.6, 3.6, total].map((t) => Math.min(t / total, 1))
+        let autoTween: gsap.core.Tween | null = null
+        let timer: gsap.core.Tween | null = null
+        let active = false
+
+        const stopAuto = () => {
+          autoTween?.kill()
+          autoTween = null
+          timer?.kill()
+          timer = null
+        }
+        const schedule = (delay: number) => {
+          timer?.kill()
+          timer = gsap.delayedCall(delay, () => {
+            if (!active) return
+            const p = tl.progress()
+            const next = checkpoints.find((c) => c > p + 0.02) ?? checkpoints[0]
+            autoTween = gsap.to(tl, {
+              progress: next,
+              duration: 1.1,
+              ease: 'power2.inOut',
+              onComplete: () => schedule(2.8),
+            })
+          })
+        }
+
+        ScrollTrigger.create({
+          trigger: pinRef.current,
+          start: 'top 60%',
+          end: 'bottom top',
+          onEnter: () => {
+            active = true
+            schedule(2.2)
+          },
+          onEnterBack: () => {
+            active = true
+            schedule(2.2)
+          },
+          onLeave: () => {
+            active = false
+            stopAuto()
+          },
+          onLeaveBack: () => {
+            active = false
+            stopAuto()
+          },
+        })
+        // user scroll takes over: pause auto-play, resume after 4s idle
+        const onUserScroll = () => {
+          if (!active) return
+          autoTween?.kill()
+          autoTween = null
+          schedule(4)
+        }
+        window.addEventListener('wheel', onUserScroll, { passive: true })
+        window.addEventListener('touchmove', onUserScroll, { passive: true })
+        return () => {
+          stopAuto()
+          window.removeEventListener('wheel', onUserScroll)
+          window.removeEventListener('touchmove', onUserScroll)
+        }
       })
 
       // Mobile: vertical stack, reveal per stage
